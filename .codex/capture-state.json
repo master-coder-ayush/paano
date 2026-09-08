@@ -1,0 +1,58 @@
+﻿{
+    "canary-session-one":  {
+                               "file":  "2026-09-08_11-12-37_canary-session-one.md",
+                               "prompt_count":  1,
+                               "response_count":  1,
+                               "first_prompt_time":  "2026-09-08T11:12:37.327Z",
+                               "last_prompt_time":  "2026-09-08T11:12:37.327Z"
+                           },
+    "01a080ba-31b4-7e70-9268-e32d8adb1554":  {
+                                                 "file":  "2026-09-08_11-14-45_01a080ba-31b4-7e70-9268-e32d8adb1554.md",
+                                                 "prompt_count":  1,
+                                                 "response_count":  1,
+                                                 "first_prompt_time":  "2026-09-08T11:14:45.484Z",
+                                                 "last_prompt_time":  "2026-09-08T11:14:45.484Z"
+                                             },
+    "01a080bb-13d3-7b40-94c0-9b93c63e33a3":  {
+                                                 "file":  "2026-09-08_11-15-43_01a080bb-13d3-7b40-94c0-9b93c63e33a3.md",
+                                                 "prompt_count":  1,
+                                                 "response_count":  1,
+                                                 "first_prompt_time":  "2026-09-08T11:15:43.514Z",
+                                                 "last_prompt_time":  "2026-09-08T11:15:43.514Z"
+                                             },
+    "canary-session-five":  {
+                                "file":  "2026-09-08_11-13-57_canary-session-five.md",
+                                "prompt_count":  1,
+                                "response_count":  1,
+                                "first_prompt_time":  "2026-09-08T11:13:57.961Z",
+                                "last_prompt_time":  "2026-09-08T11:13:57.961Z"
+                            },
+    "canary-session-three":  {
+                                 "file":  "2026-09-08_11-13-20_canary-session-three.md",
+                                 "prompt_count":  1,
+                                 "response_count":  1,
+                                 "first_prompt_time":  "2026-09-08T11:13:20.140Z",
+                                 "last_prompt_time":  "2026-09-08T11:13:20.140Z"
+                             },
+    "canary-session-two":  {
+                               "file":  "2026-09-08_11-12-38_canary-session-two.md",
+                               "prompt_count":  1,
+                               "response_count":  1,
+                               "first_prompt_time":  "2026-09-08T11:12:38.517Z",
+                               "last_prompt_time":  "2026-09-08T11:12:38.517Z"
+                           },
+    "canary-session-six":  {
+                               "file":  "2026-09-08_11-13-59_canary-session-six.md",
+                               "prompt_count":  1,
+                               "response_count":  1,
+                               "first_prompt_time":  "2026-09-08T11:13:59.049Z",
+                               "last_prompt_time":  "2026-09-08T11:13:59.049Z"
+                           },
+    "canary-session-four":  {
+                                "file":  "2026-09-08_11-13-21_canary-session-four.md",
+                                "prompt_count":  1,
+                                "response_count":  1,
+                                "first_prompt_time":  "2026-09-08T11:13:21.170Z",
+                                "last_prompt_time":  "2026-09-08T11:13:21.170Z"
+                            }
+}
