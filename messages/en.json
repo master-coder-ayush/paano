@@ -5,8 +5,6 @@
     "signIn": "Sign in",
     "signUp": "Sign up",
     "openArea": "Open area",
-    "openWorkspace": "Open workspace",
-    "serviceHealth": "Service health",
     "email": "Email",
     "password": "Password",
     "name": "Name",
@@ -30,29 +28,6 @@
       "creator": "creator",
       "agency_manager": "agency manager",
       "platform_admin": "platform admin"
-    }
-  },
-  "Home": {
-    "eyebrow": "B2B LinkedIn creator marketplace",
-    "headline": "Hire vetted LinkedIn creators for sponsored posts.",
-    "intro": "Paano gives brands and creators the foundation for discovery, campaign briefs, manual collaborations, messages, billing placeholders, and admin operations.",
-    "sections": {
-      "companies": {
-        "title": "For companies",
-        "body": "Represent spaces, campaigns, creator shortlists, collaborations, billing placeholders, and workspace settings."
-      },
-      "creators": {
-        "title": "For creators",
-        "body": "Model creator cards, collaboration requests, draft notes, published post URLs, earnings, referrals, and messages."
-      },
-      "marketplace": {
-        "title": "Manual marketplace",
-        "body": "Start with vetted profiles, simple filters, manual admin review, and first-party records before later automation."
-      },
-      "operations": {
-        "title": "Operations-ready",
-        "body": "Keep billing ledgers append-only, review queues auditable, and every protected record scoped to a workspace."
-      }
     }
   },
   "Dashboard": {
@@ -343,6 +318,111 @@
     "empty": {
       "title": "No support items",
       "body": "Support records are not introduced in Sprint 1. This shell confirms routing, navigation, and permission behavior for the future module."
+    }
+  },
+  "Public": {
+    "nav": {
+      "label": "Public navigation",
+      "menu": "Open navigation",
+      "creators": "Creators",
+      "pricing": "Pricing",
+      "about": "About",
+      "help": "Help"
+    },
+    "footer": {
+      "blurb": "The B2B LinkedIn creator marketplace for focused campaigns and credible distribution.",
+      "product": "Product",
+      "company": "Company",
+      "reports": "Reports",
+      "resources": "Resources",
+      "pricingMarkdown": "Pricing markdown",
+      "llms": "LLMs.txt",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    },
+    "home": {
+      "eyebrow": "B2B LinkedIn creator marketplace",
+      "headline": "Turn trusted voices into your next growth channel.",
+      "intro": "Paano helps B2B teams discover vetted LinkedIn creators, brief campaigns, and manage collaborations in one focused workspace.",
+      "primaryCta": "Start a campaign",
+      "secondaryCta": "Explore creators",
+      "proofTitle": "A practical marketplace for modern B2B teams",
+      "proofOne": "Find creators by audience, topic, and fit.",
+      "proofTwo": "Move from brief to published post with clear ownership.",
+      "proofThree": "Keep campaign, creator, and billing records organized."
+    },
+    "creatorsPage": {
+      "eyebrow": "For creators",
+      "title": "Get discovered by teams building the future of B2B.",
+      "intro": "Build a clear creator card, receive relevant briefs, and turn your LinkedIn expertise into repeatable collaborations.",
+      "cta": "Create your creator profile",
+      "cards": [
+        {
+          "title": "Show your point of view",
+          "body": "Give brands a concise view of your audience, topics, and voice."
+        },
+        {
+          "title": "Work from better briefs",
+          "body": "Keep deliverables, draft notes, and publishing details in one place."
+        },
+        {
+          "title": "Grow with trust",
+          "body": "Build a track record of thoughtful collaborations and published work."
+        }
+      ]
+    },
+    "pricingPage": {
+      "eyebrow": "Pricing",
+      "title": "Start focused. Scale when the motion is working.",
+      "intro": "Choose a straightforward path for your first creator campaign. Talk to us when you need managed support.",
+      "selfTitle": "Self-serve",
+      "selfBody": "For teams ready to discover creators and run campaigns directly.",
+      "selfPrice": "Starting with the essentials",
+      "managedTitle": "Managed campaigns",
+      "managedBody": "For teams that want help with creator strategy, sourcing, and operations.",
+      "managedPrice": "Talk to our team",
+      "cta": "Create an account"
+    },
+    "about": {
+      "eyebrow": "About Paano",
+      "title": "B2B distribution works better when expertise stays human.",
+      "intro": "Paano is building the operating layer between ambitious companies and the creators their audiences already trust."
+    },
+    "help": {
+      "eyebrow": "Help center",
+      "title": "Questions before your first campaign?",
+      "intro": "Start with the basics, then reach out when your workflow needs a closer look.",
+      "contact": "Contact support",
+      "questions": [
+        {
+          "q": "Who is Paano for?",
+          "a": "B2B companies, agencies, and LinkedIn creators who want a focused collaboration workflow."
+        },
+        {
+          "q": "Are campaigns automated?",
+          "a": "The first version keeps review, briefs, and collaboration operations intentionally human-led."
+        },
+        {
+          "q": "How do I join?",
+          "a": "Create an account, choose your role, and complete the short onboarding flow."
+        }
+      ]
+    },
+    "generic": {
+      "eyebrow": "Paano resources",
+      "title": "A clear starting point for your next campaign.",
+      "intro": "This public resource is being prepared. In the meantime, explore creators or start your workspace.",
+      "cta": "Explore creators"
+    },
+    "legal": {
+      "privacyEyebrow": "Privacy",
+      "privacyTitle": "Privacy is part of the product.",
+      "termsEyebrow": "Terms",
+      "termsTitle": "Clear terms for a clear marketplace.",
+      "contactEyebrow": "Contact",
+      "contactTitle": "Let us talk about your next campaign.",
+      "contactIntro": "Tell us what you are building and we will help you find the right starting point."
     }
   }
 }
