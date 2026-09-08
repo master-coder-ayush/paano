@@ -1,0 +1,29 @@
+{
+  "Home": {
+    "brand": "Naano",
+    "healthLink": "Health",
+    "eyebrow": "Prototype foundation",
+    "headline": "A clean base for the Naano build.",
+    "intro": "The project is ready for the next phase: a Next.js app with Tailwind CSS, lucide icons, internationalized copy, Drizzle migrations, and a MySQL health check.",
+    "primaryCta": "Check service",
+    "stack": "Next.js + Tailwind + Drizzle + MySQL",
+    "cards": {
+      "i18n": {
+        "title": "Internationalized from day one",
+        "body": "Visible copy is routed through next-intl so additional locales can be added without rewriting the interface."
+      },
+      "database": {
+        "title": "MySQL-ready data layer",
+        "body": "Drizzle ORM is configured for MySQL with schema files and migration scripts."
+      },
+      "health": {
+        "title": "Operational health endpoint",
+        "body": "The API reports whether the service is running and whether the database can answer a query."
+      },
+      "ui": {
+        "title": "Prototype-friendly UI",
+        "body": "Tailwind CSS and lucide-react are installed so the first real product screens can move quickly."
+      }
+    }
+  }
+}
