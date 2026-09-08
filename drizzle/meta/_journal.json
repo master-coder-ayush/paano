@@ -15,6 +15,13 @@
       "when": 1788883856405,
       "tag": "0001_cultured_killer_shrike",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1788886747481,
+      "tag": "0002_careful_nomad",
+      "breakpoints": true
     }
   ]
 }

@@ -31,11 +31,11 @@ export default async function Home() {
         <nav className="flex items-center justify-between border-b border-border pb-5">
           <div className="text-xl font-semibold">{common("brand")}</div>
           <div className="flex items-center gap-2">
-            <Link href="/dashboard" className="px-3 py-2 text-sm font-semibold">
+            <Link href="/login" className="px-3 py-2 text-sm font-semibold">
               {common("signIn")}
             </Link>
             <Link
-              href="/dashboard"
+              href="/register"
               className="bg-primary px-4 py-2 text-sm font-semibold text-background"
             >
               {common("signUp")}

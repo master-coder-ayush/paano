@@ -81,9 +81,17 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Routes
 
 - `/` renders the landing page.
+- `/login`, `/register`, `/forgot-password`, `/reset-password`, and `/logout` provide the email/password auth prototype.
+- `/onboarding`, `/onboarding/brand`, and `/onboarding/creator` provide role selection and role-based onboarding.
+- `/dashboard` opens the deterministic demo workspace selector.
+- `/brand`, `/creator`, `/agency`, and `/admin` render protected workspace shells.
+- `/notifications` renders the protected in-app notification center.
 - `/api/health` returns service status and checks MySQL connectivity.
+- `/api/auth/*`, `/api/onboarding/*`, `/api/workspaces`, `/api/notifications`, and `/api/admin/review` expose the current route-handler contracts.
 
 If `DATABASE_URL` is not configured or MySQL is unavailable, `/api/health` returns `503` with `database.connected: false`.
+
+Email delivery persistence exists for future delivery auditability, but Amazon SES is not configured for this project right now and email delivery is not active in the UI.
 
 ## Database
 

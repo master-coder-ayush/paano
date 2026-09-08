@@ -46,3 +46,36 @@ Indexes cover workspace ownership, user membership, unique emails, token hashes,
 - `audit_logs.metadata`: object for state transition details.
 
 Query-critical JSON fields should become typed columns before analytics or filtering depends on them.
+
+## Version 1 Sprint 2
+
+### Migration Purpose
+
+Migration `drizzle/0002_careful_nomad.sql` adds onboarding, notification, and dormant email-delivery persistence tables.
+
+### New Tables
+
+- `user_onboarding_states`: tracks selected role, onboarding status, current step, profile draft JSON, and completion timestamp.
+- `notifications`: stores in-app notifications by recipient, optional workspace, related entity, metadata, read timestamp, and status.
+- `email_delivery_attempts`: records future delivery attempts separately from in-app notifications.
+
+### Ownership Rules
+
+- `user_onboarding_states` is owned by `user_id`.
+- `notifications` is owned by `recipient_user_id` and optionally scoped to `workspace_id`.
+- `email_delivery_attempts` is owned by recipient email and optional `recipient_user_id`; it must not contain provider secrets.
+
+### Enum Values
+
+- Onboarding status: `not_started`, `in_progress`, `complete`, `skipped_optional_step`.
+- Notification status: `unread`, `read`, `archived`, `delivery_pending`, `delivery_failed`.
+
+### JSON Shapes
+
+- `user_onboarding_states.profile_draft`: role-specific draft data from brand or creator onboarding forms.
+- `notifications.metadata`: object with optional `href` and related state details.
+- `email_delivery_attempts.metadata`: object for template variables and future provider diagnostics; provider secrets are forbidden.
+
+### Seed Data
+
+`drizzle/seed-v1-sprint-2.sql` adds completed onboarding states and demo in-app notifications. It also includes a TODO comment that email delivery attempts should be inserted only after Amazon SES is set up.

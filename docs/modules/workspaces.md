@@ -57,3 +57,24 @@ Workspace status reserves `active`, `suspended`, and `archived`. Sprint 1 expose
 - Authenticated user without a workspace of the requested type: `workspace_missing`.
 - Inactive workspace: `unauthorized`.
 - Unsupported role: `role_missing`.
+
+## Version 1 Sprint 2
+
+### Routes
+
+- `/onboarding`: selects `brand` or `creator`.
+- `/onboarding/brand`: creates a brand workspace contract.
+- `/onboarding/creator`: creates a creator workspace contract.
+
+### Workspace Creation Rules
+
+- Brand onboarding creates a `brand` workspace, owner membership, and `brands` row.
+- Creator onboarding creates a `creator` workspace, creator membership, `creators` row, and `creator_profiles` row.
+- Workspace status is `active` after completed onboarding.
+- User status changes from `onboarding_required` to `active` with the workspace creation transaction in production persistence.
+
+### UI Behavior
+
+- `/dashboard` remains available for deterministic demo workspaces.
+- New auth users must choose a role before entering brand or creator app areas.
+- Workspace shell now includes a notification badge linked to `/notifications`.

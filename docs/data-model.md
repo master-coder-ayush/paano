@@ -61,6 +61,18 @@ Token rules:
 - Header-authenticated APIs must validate token status, expiry, scopes, workspace access, and user status.
 - Token usage on sensitive endpoints should update `last_used_at` and may create audit logs.
 
+### user_onboarding_states
+
+- `id`
+- `user_id`
+- `selected_role`: brand, creator
+- `status`: not_started, in_progress, complete, skipped_optional_step
+- `current_step`
+- `profile_draft`
+- `completed_at`
+- `created_at`
+- `updated_at`
+
 ### workspaces
 
 - `id`
@@ -374,8 +386,30 @@ Token rules:
 - `entity_type`
 - `entity_id`
 - `metadata`
+- `status`: unread, read, archived, delivery_pending, delivery_failed
 - `read_at`
 - `created_at`
+- `updated_at`
+
+### email_delivery_attempts
+
+- `id`
+- `recipient_user_id`
+- `recipient_email`
+- `template`
+- `status`
+- `provider_message_id`
+- `error_message`
+- `metadata`
+- `created_at`
+- `updated_at`
+
+Email delivery rules:
+
+- Delivery attempts are persisted separately from in-app notifications.
+- Amazon SES is the intended future sender, but SES is not configured for this project right now.
+- Email delivery must not be visible in auth/onboarding UI until a later sprint explicitly enables it.
+- Provider secrets must not be stored in `metadata`.
 
 ## Billing and Referral Tables
 

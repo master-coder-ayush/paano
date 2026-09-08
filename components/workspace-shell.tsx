@@ -3,6 +3,7 @@ import type React from "react";
 import { useTranslations } from "next-intl";
 import {
   AlertTriangle,
+  Bell,
   Building2,
   ClipboardCheck,
   CreditCard,
@@ -10,6 +11,7 @@ import {
   FolderKanban,
   Inbox,
   LayoutDashboard,
+  LogOut,
   MessageSquare,
   ReceiptText,
   Search,
@@ -22,6 +24,7 @@ import {
 } from "lucide-react";
 import {
   authorizeWorkspace,
+  demoNotificationCounts,
   demoStats,
   navigationByType,
   type DemoUser,
@@ -116,8 +119,10 @@ export function WorkspaceShell({
 }) {
   const common = useTranslations("Common");
   const t = useTranslations("Workspace");
+  const notifications = useTranslations("Notifications");
   const Icon = icons[area];
   const nav = navigationByType[workspace.type];
+  const unreadCount = demoNotificationCounts[user.key];
 
   return (
     <main className="min-h-screen bg-background text-primary">
@@ -142,6 +147,18 @@ export function WorkspaceShell({
               />
             ))}
           </nav>
+          <form action="/api/auth/logout" className="mt-6" method="post">
+            <button
+              className="flex h-10 w-full items-center gap-3 overflow-hidden px-2 text-sm text-primary/75 transition hover:bg-accent/35 hover:text-primary"
+              title={common("signOut")}
+              type="submit"
+            >
+              <LogOut className="size-5 shrink-0" aria-hidden="true" />
+              <span className="whitespace-nowrap opacity-100 transition-opacity lg:opacity-0 lg:group-hover:opacity-100">
+                {common("signOut")}
+              </span>
+            </button>
+          </form>
         </aside>
 
         <section className="px-5 py-6 sm:px-7 lg:px-9">
@@ -153,9 +170,24 @@ export function WorkspaceShell({
               <h1 className="mt-2 text-3xl font-semibold">{title}</h1>
               <p className="mt-2 max-w-3xl leading-7 text-primary/75">{description}</p>
             </div>
-            <div className="border border-border bg-surface px-4 py-3 text-sm">
-              <div className="font-medium">{user.name}</div>
-              <div className="mt-1 text-primary/70">{common(`roles.${workspace.role}`)}</div>
+            <div className="flex items-center gap-3">
+              <Link
+                aria-label={notifications("badgeLabel", { count: unreadCount })}
+                className="relative flex size-10 items-center justify-center border border-border bg-surface"
+                href={withAsParam("/notifications", user)}
+                title={notifications("title")}
+              >
+                <Bell className="size-5" aria-hidden="true" />
+                {unreadCount > 0 ? (
+                  <span className="absolute -right-1 -top-1 flex size-5 items-center justify-center bg-primary text-xs font-semibold text-white">
+                    {unreadCount}
+                  </span>
+                ) : null}
+              </Link>
+              <div className="border border-border bg-surface px-4 py-3 text-sm">
+                <div className="font-medium">{user.name}</div>
+                <div className="mt-1 text-primary/70">{common(`roles.${workspace.role}`)}</div>
+              </div>
             </div>
           </header>
           <div className="py-6">{children}</div>

@@ -59,6 +59,21 @@ export const reviewStatuses = [
   "archived",
 ] as const;
 
+export const onboardingStatuses = [
+  "not_started",
+  "in_progress",
+  "complete",
+  "skipped_optional_step",
+] as const;
+
+export const notificationStatuses = [
+  "unread",
+  "read",
+  "archived",
+  "delivery_pending",
+  "delivery_failed",
+] as const;
+
 export const serviceChecks = mysqlTable("service_checks", {
   id: serial("id").primaryKey(),
   service: varchar("service", { length: 80 }).notNull(),
@@ -136,6 +151,25 @@ export const authTokens = mysqlTable(
     tokenHashIdx: uniqueIndex("auth_tokens_token_hash_idx").on(table.tokenHash),
     userIdx: index("auth_tokens_user_id_idx").on(table.userId),
     workspaceIdx: index("auth_tokens_workspace_id_idx").on(table.workspaceId),
+  }),
+);
+
+export const userOnboardingStates = mysqlTable(
+  "user_onboarding_states",
+  {
+    id: id(),
+    userId: varchar("user_id", { length: 36 }).notNull().references(() => users.id),
+    selectedRole: varchar("selected_role", { length: 40 }).$type<"brand" | "creator">(),
+    status: varchar("status", { length: 40 }).$type<(typeof onboardingStatuses)[number]>().notNull(),
+    currentStep: varchar("current_step", { length: 80 }).notNull(),
+    profileDraft: json("profile_draft").$type<Record<string, unknown>>().notNull(),
+    completedAt: timestamp("completed_at"),
+    ...timestamps,
+  },
+  (table) => ({
+    userIdx: uniqueIndex("user_onboarding_states_user_id_idx").on(table.userId),
+    statusIdx: index("user_onboarding_states_status_idx").on(table.status),
+    roleIdx: index("user_onboarding_states_selected_role_idx").on(table.selectedRole),
   }),
 );
 
@@ -352,6 +386,54 @@ export const messages = mysqlTable(
   (table) => ({
     threadIdx: index("messages_thread_id_idx").on(table.threadId),
     senderIdx: index("messages_sender_user_id_idx").on(table.senderUserId),
+  }),
+);
+
+export const notifications = mysqlTable(
+  "notifications",
+  {
+    id: id(),
+    recipientUserId: varchar("recipient_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    workspaceId: varchar("workspace_id", { length: 36 }).references(() => workspaces.id),
+    type: varchar("type", { length: 80 }).notNull(),
+    entityType: varchar("entity_type", { length: 80 }),
+    entityId: varchar("entity_id", { length: 36 }),
+    metadata: json("metadata").$type<Record<string, unknown>>().notNull(),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof notificationStatuses)[number]>()
+      .notNull(),
+    readAt: timestamp("read_at"),
+    ...timestamps,
+  },
+  (table) => ({
+    recipientStatusIdx: index("notifications_recipient_status_idx").on(
+      table.recipientUserId,
+      table.status,
+    ),
+    workspaceIdx: index("notifications_workspace_id_idx").on(table.workspaceId),
+    entityIdx: index("notifications_entity_idx").on(table.entityType, table.entityId),
+  }),
+);
+
+export const emailDeliveryAttempts = mysqlTable(
+  "email_delivery_attempts",
+  {
+    id: id(),
+    recipientUserId: varchar("recipient_user_id", { length: 36 }).references(() => users.id),
+    recipientEmail: varchar("recipient_email", { length: 255 }).notNull(),
+    template: varchar("template", { length: 80 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    providerMessageId: varchar("provider_message_id", { length: 120 }),
+    errorMessage: text("error_message"),
+    metadata: json("metadata").$type<Record<string, unknown>>().notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    recipientIdx: index("email_delivery_attempts_recipient_idx").on(table.recipientEmail),
+    statusIdx: index("email_delivery_attempts_status_idx").on(table.status),
+    templateIdx: index("email_delivery_attempts_template_idx").on(table.template),
   }),
 );
 

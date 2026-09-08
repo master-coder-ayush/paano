@@ -45,3 +45,34 @@ curl -H "Authorization: Bearer paano_demo_brand" http://localhost:3000/api/works
 curl -X PATCH -H "Authorization: Bearer paano_demo_brand" http://localhost:3000/api/admin/review
 curl -X PATCH -H "Authorization: Bearer paano_demo_admin" -H "Content-Type: application/json" -d "{\"id\":\"review_creator_arjun\",\"fromStatus\":\"in_review\",\"toStatus\":\"approved\"}" http://localhost:3000/api/admin/review
 ```
+
+## Version 1 Sprint 2
+
+### Public Auth Routes
+
+The following routes are public because unauthenticated users need them:
+
+- `/login`
+- `/register`
+- `/forgot-password`
+- `/reset-password`
+- `/logout`
+- `/api/auth/register`
+- `/api/auth/login`
+- `/api/auth/forgot-password`
+- `/api/auth/reset-password`
+- `/api/auth/logout`
+
+They validate inputs and must not return protected workspace data.
+
+### Protected Routes
+
+- `/notifications` uses workspace shell authorization.
+- `/api/notifications` requires `Authorization: Bearer <token>`.
+- Onboarding browser submissions require the prototype session cookie; JSON API calls can exercise validation contracts directly.
+
+### Sprint 2 Outcomes
+
+- Missing or invalid notification bearer token returns `401`.
+- Invalid signup, login, reset, role, brand onboarding, or creator onboarding data returns `422` to JSON clients.
+- Browser validation failures redirect back to the form with an error message.

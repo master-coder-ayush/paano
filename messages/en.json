@@ -7,6 +7,13 @@
     "openArea": "Open area",
     "openWorkspace": "Open workspace",
     "serviceHealth": "Service health",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "continue": "Continue",
+    "submit": "Submit",
+    "signOut": "Sign out",
+    "backToLogin": "Back to login",
     "workspace": "workspace",
     "workspaceTypes": {
       "brand": "brand",
@@ -51,8 +58,129 @@
   "Dashboard": {
     "eyebrow": "Workspace selector",
     "headline": "Choose a demo workspace.",
-    "intro": "Sprint 1 uses deterministic demo identities so brand, creator, agency, and admin routing can be tested before full email/password onboarding lands.",
+    "intro": "Use a demo workspace, or complete signup and onboarding to enter as a brand or creator.",
     "cardBody": "{userName} signs in as {role} for a {workspaceType} workspace."
+  },
+  "Auth": {
+    "login": {
+      "eyebrow": "Welcome back",
+      "title": "Sign in to your workspace.",
+      "body": "Use your email and password to return to a brand, creator, agency, or admin workspace.",
+      "submit": "Sign in",
+      "registerPrompt": "Need an account?",
+      "registerLink": "Create one",
+      "forgotPassword": "Forgot password?"
+    },
+    "register": {
+      "eyebrow": "Create account",
+      "title": "Start with email and password.",
+      "body": "New users choose a brand or creator role before entering the app.",
+      "submit": "Create account",
+      "loginPrompt": "Already have an account?",
+      "loginLink": "Sign in"
+    },
+    "forgotPassword": {
+      "eyebrow": "Account recovery",
+      "title": "Request a password reset.",
+      "body": "Enter your account email to create a reset-token request.",
+      "submit": "Request reset",
+      "sent": "If the address is valid, a reset request has been accepted."
+    },
+    "resetPassword": {
+      "eyebrow": "Reset password",
+      "title": "Set a new password.",
+      "body": "Use a reset token and a new password with at least eight characters.",
+      "token": "Reset token",
+      "submit": "Update password"
+    },
+    "logout": {
+      "eyebrow": "Sign out",
+      "title": "End this session.",
+      "body": "Signing out clears the prototype session cookies for this browser.",
+      "submit": "Sign out"
+    }
+  },
+  "Onboarding": {
+    "role": {
+      "eyebrow": "Role selection",
+      "title": "Choose how you will use Paano.",
+      "body": "A new user must choose brand or creator before entering the protected app.",
+      "brandTitle": "Brand",
+      "brandBody": "Run campaigns, manage spaces, shortlist creators, and track manual collaborations.",
+      "creatorTitle": "Creator",
+      "creatorBody": "Build a creator card, receive collaboration requests, and manage earnings placeholders.",
+      "submit": "Continue"
+    },
+    "brand": {
+      "eyebrow": "Brand onboarding",
+      "title": "Set up your brand workspace.",
+      "body": "Tell us who the company is and the audience you want LinkedIn creators to reach.",
+      "companyName": "Company name",
+      "website": "Website",
+      "websitePlaceholder": "https://example.com",
+      "industry": "Industry",
+      "industryPlaceholder": "Select an industry",
+      "industries": {
+        "b2bSaas": "B2B SaaS",
+        "fintech": "Fintech",
+        "healthcare": "Healthcare",
+        "ecommerce": "E-commerce",
+        "education": "Education",
+        "professionalServices": "Professional services",
+        "developerTools": "Developer tools",
+        "marketingAdvertising": "Marketing and advertising"
+      },
+      "targetIcp": "Target ICP",
+      "submit": "Finish brand onboarding"
+    },
+    "creator": {
+      "eyebrow": "Creator onboarding",
+      "title": "Set up your creator profile.",
+      "body": "Capture the baseline LinkedIn profile details needed for a manual marketplace card.",
+      "linkedinUrl": "LinkedIn URL",
+      "headline": "Headline",
+      "bio": "Bio",
+      "topics": "Topics",
+      "country": "Country",
+      "followerCount": "Follower count",
+      "pricePerPostAmount": "Starting price per post",
+      "topicsPlaceholder": "DevTools, B2B SaaS, Founder-led sales",
+      "submit": "Finish creator onboarding"
+    }
+  },
+  "Notifications": {
+    "title": "Notifications",
+    "description": "Review account and workspace activity from one protected center.",
+    "emptyTitle": "No notifications",
+    "emptyBody": "New onboarding and workspace events will appear here once persisted workflows are connected.",
+    "badgeLabel": "{count} unread notifications",
+    "headers": {
+      "type": "Type",
+      "status": "Status",
+      "entity": "Entity",
+      "action": "Action"
+    },
+    "open": "Open",
+    "rows": {
+      "brandOnboarding": {
+        "type": "onboarding_completed",
+        "status": "unread",
+        "entity": "brand",
+        "action": "Open brand overview"
+      },
+      "creatorReview": {
+        "type": "creator_profile_in_review",
+        "status": "unread",
+        "entity": "creator_profile",
+        "action": "Open creator overview"
+      },
+      "adminReview": {
+        "type": "review_queue_updated",
+        "status": "unread",
+        "entity": "admin_review_item",
+        "action": "Open review queue"
+      }
+    }
   },
   "Workspace": {
     "guard": {

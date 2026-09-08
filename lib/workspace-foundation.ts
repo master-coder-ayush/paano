@@ -188,6 +188,13 @@ export const demoStats = {
   ],
 };
 
+export const demoNotificationCounts: Record<DemoUser["key"], number> = {
+  brand: 1,
+  creator: 1,
+  agency: 0,
+  admin: 2,
+};
+
 export function hashToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
 }

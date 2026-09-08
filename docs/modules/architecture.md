@@ -42,3 +42,25 @@ Protected route guards render explicit states for `unauthenticated`, `unauthoriz
 - Run `npm run lint` and `npm run build`.
 - Manually verify protected shell URLs without `?as=` show permission denied.
 - Manually verify role mismatch, such as `/admin?as=brand`, shows permission denied.
+
+## Version 1 Sprint 2
+
+### Routes
+
+- Public auth UI: `/login`, `/register`, `/forgot-password`, `/reset-password`, `/logout`.
+- Public auth handlers: `/api/auth/register`, `/api/auth/login`, `/api/auth/forgot-password`, `/api/auth/reset-password`, `/api/auth/logout`.
+- Onboarding UI: `/onboarding`, `/onboarding/brand`, `/onboarding/creator`.
+- Onboarding handlers: `/api/onboarding/role`, `/api/onboarding/brand`, `/api/onboarding/creator`.
+- Protected notifications: `/notifications`, `/api/notifications`.
+
+### UI Foundation
+
+- Auth and onboarding visible text is routed through `messages/en.json`.
+- Auth/onboarding forms use the same light, square-edged UI foundation as workspace shells.
+- No email delivery controls or email provider status are visible in the UI.
+
+### Service Contracts
+
+- Browser form submissions redirect after success or back to the form with a validation message.
+- JSON clients receive status objects or `422` field validation errors.
+- `/api/notifications` requires `Authorization: Bearer <token>`.
