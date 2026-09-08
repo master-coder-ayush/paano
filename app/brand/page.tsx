@@ -1,5 +1,12 @@
 import { getTranslations } from "next-intl/server";
-import { EmptyState, StatGrid, WorkspaceGuard, WorkspaceShell } from "@/components/workspace-shell";
+import Link from "next/link";
+import {
+  EmptyState,
+  StatGrid,
+  WorkspaceGuard,
+  WorkspaceShell,
+} from "@/components/workspace-shell";
+import { listCampaigns, listSpaces } from "@/lib/brand-workspace";
 import { userFromDemoKey } from "@/lib/workspace-foundation";
 
 export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
@@ -18,6 +25,32 @@ export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
         >
           <div className="grid gap-5">
             <StatGrid area="brand" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Link
+                href={`/brand/spaces?as=${activeUser.key}`}
+                className="border border-border bg-surface p-5"
+              >
+                <h2 className="font-semibold">{t("spaces.title")}</h2>
+                <p className="mt-2 text-3xl font-semibold">
+                  {listSpaces(workspace.id).length}
+                </p>
+                <p className="mt-1 text-sm text-primary/70">
+                  {t("spaces.body")}
+                </p>
+              </Link>
+              <Link
+                href={`/brand/campaigns?as=${activeUser.key}`}
+                className="border border-border bg-surface p-5"
+              >
+                <h2 className="font-semibold">{t("campaigns.title")}</h2>
+                <p className="mt-2 text-3xl font-semibold">
+                  {listCampaigns(workspace.id).length}
+                </p>
+                <p className="mt-1 text-sm text-primary/70">
+                  {t("campaigns.body")}
+                </p>
+              </Link>
+            </div>
             <section className="grid gap-4 lg:grid-cols-2">
               <EmptyState
                 title={t("empty.spaces.title")}

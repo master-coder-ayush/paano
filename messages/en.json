@@ -214,6 +214,8 @@
   "Brand": {
     "title": "Brand overview",
     "description": "Manage spaces, campaigns, creators, manual collaborations, messages, billing placeholders, and workspace settings from a single protected shell.",
+    "spaces": { "title": "Spaces", "body": "Workspace-owned destinations for your campaigns." },
+    "campaigns": { "title": "Campaigns", "body": "Create and track campaigns under a space." },
     "empty": {
       "spaces": {
         "title": "Spaces",
@@ -234,6 +236,8 @@
       }
     }
   },
+  "BrandSpaces": { "title": "Spaces", "newTitle": "Create a space", "description": "Organize campaigns around a product, audience, or destination.", "listTitle": "Your spaces", "new": "New space" },
+  "BrandCampaigns": { "title": "Campaigns", "newTitle": "Create a campaign", "description": "Plan campaigns under a specific space with clear status and budget ownership.", "new": "New campaign" },
   "Creator": {
     "title": "Creator overview",
     "description": "Review profile completion, collaboration requests, draft notes, published post submission, earnings placeholders, affiliate link, messages, and settings.",

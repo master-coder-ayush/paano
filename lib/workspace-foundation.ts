@@ -125,8 +125,8 @@ export const demoUsers: DemoUser[] = [
 export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; href: string }>> = {
   brand: [
     { labelKey: "overview", href: "/brand" },
-    { labelKey: "spaces", href: "/brand#spaces" },
-    { labelKey: "campaigns", href: "/brand#campaigns" },
+    { labelKey: "spaces", href: "/brand/spaces" },
+    { labelKey: "campaigns", href: "/brand/campaigns" },
     { labelKey: "creators", href: "/brand#creators" },
     { labelKey: "collaborations", href: "/brand#collaborations" },
     { labelKey: "messages", href: "/brand#messages" },
