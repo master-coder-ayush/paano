@@ -1,6 +1,41 @@
-# Naano Clone
+# Paano
 
-This is a working prototype foundation for a `naano.com` clone. It starts with a Next.js landing page, internationalized copy, Drizzle ORM, MySQL connectivity, and an API health check.
+Paano is a planned B2B LinkedIn creator marketplace inspired by `naano.com`. The product will let brands discover vetted LinkedIn creators, create campaign briefs, manage collaborations, track creator-post performance, handle billing/payouts, and later expand into agencies, enterprise controls, automation, and third-party integrations.
+
+This repository is currently a scaffolded Next.js prototype. Product planning lives in `docs/` and should be treated as the source of truth before development begins.
+
+## Product Documentation
+
+- [Product roadmap](docs/features.md) defines the seven product versions and the order in which capabilities should be built.
+- [Data model](docs/data-model.md) defines the baseline entities, fields, ownership rules, statuses, and later-version tables.
+- [Sprint pack](docs/sprints/README.md) explains how to use the sprint documentation.
+- `docs/sprints/version-1` through `docs/sprints/version-7` contain seven sprint files per version.
+- [Module docs](docs/modules/README.md) explains the module-documentation requirement.
+
+Every sprint file lists affected modules. Before implementing a sprint, developers must read or create the corresponding `docs/modules/<module>.md` files and keep them updated with routes, data entities, service contracts, permissions, state transitions, edge cases, and test notes.
+
+## Security Requirements
+
+All product changes must be protected by authentication and role-based access control.
+
+- Protected pages, server actions, route handlers, and APIs must resolve the authenticated user before reading or changing data.
+- Mutation/API endpoints must require an authentication header token, using an `Authorization: Bearer <token>` style contract unless the module doc defines a stricter standard.
+- RBAC must be enforced server-side against workspace membership, workspace role, entity ownership, and module-specific permissions.
+- UI hiding is not sufficient; unauthorized requests must fail even when called directly.
+- Public routes, such as marketing pages, creator cards, tracking redirects, and pixel ingestion, must be explicitly documented as public and must not leak protected workspace data.
+- New data model changes must document ownership, token/auth requirements, permission checks, and audit/activity expectations.
+
+## Version Strategy
+
+The product is intentionally sequenced so codebase-only features come before third-party integrations:
+
+1. Version 1: foundation and manual marketplace.
+2. Version 2: complete self-serve workflow.
+3. Version 3: first-party tracking, pixel, attribution, and results.
+4. Version 4: agencies, public growth tools, and content engine with no required integrations.
+5. Version 5: enterprise codebase features, internal API/webhooks, rule-based matching, managed ops, and automation.
+6. Version 6: payments, payouts, AI assistance, email, LinkedIn import, calendar, and community integrations.
+7. Version 7: CRM, SSO, e-signature, tax, data warehouse, and multi-channel integrations.
 
 ## Stack
 
