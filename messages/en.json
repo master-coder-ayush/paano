@@ -493,6 +493,35 @@
       "intro": "This public resource is being prepared. In the meantime, explore creators or start your workspace.",
       "cta": "Explore creators"
     },
+    "Collaborations": {
+      "brandTitle": "Collaborations",
+      "brandDescription": "Invite creators, track delivery, and manage campaign work.",
+      "creatorTitle": "Collaboration requests",
+      "creatorDescription": "Review requests and keep campaign context in one place.",
+      "detailTitle": "Collaboration detail",
+      "detailDescription": "Review ownership, status, price, due date, and next action.",
+      "price": "Price",
+      "due": "Due date",
+      "notes": "Deliverable notes",
+      "emptyTitle": "No collaborations yet",
+      "emptyBody": "New invitations and campaign work will appear here.",
+      "status": {
+        "invited": "Invited",
+        "accepted": "Accepted",
+        "declined": "Declined",
+        "draft": "Draft",
+        "published": "Published",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "Messages": {
+      "title": "Messages",
+      "description": "Keep campaign conversations connected to the collaboration.",
+      "threadTitle": "Developer tools launch",
+      "replyTitle": "Reply securely",
+      "replyBody": "Messages are protected by workspace access and stored against this campaign thread."
+    },
     "legal": {
       "privacyEyebrow": "Privacy",
       "privacyTitle": "Privacy is part of the product.",
@@ -502,5 +531,26 @@
       "contactTitle": "Let us talk about your next campaign.",
       "contactIntro": "Tell us what you are building and we will help you find the right starting point."
     }
+  },
+  "Collaborations": {
+    "brandTitle": "Collaborations",
+    "brandDescription": "Invite creators, track delivery, and manage campaign work.",
+    "creatorTitle": "Collaboration requests",
+    "creatorDescription": "Review requests and keep campaign context in one place.",
+    "detailTitle": "Collaboration detail",
+    "detailDescription": "Review ownership, status, price, due date, and next action.",
+    "price": "Price",
+    "due": "Due date",
+    "notes": "Deliverable notes",
+    "emptyTitle": "No collaborations yet",
+    "emptyBody": "New invitations and campaign work will appear here.",
+    "status": { "invited": "Invited", "accepted": "Accepted", "declined": "Declined", "draft": "Draft", "published": "Published", "completed": "Completed", "cancelled": "Cancelled" }
+  },
+  "Messages": {
+    "title": "Messages",
+    "description": "Keep campaign conversations connected to the collaboration.",
+    "threadTitle": "Developer tools launch",
+    "replyTitle": "Reply securely",
+    "replyBody": "Messages are protected by workspace access and stored against this campaign thread."
   }
 }
