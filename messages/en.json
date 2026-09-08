@@ -1,29 +1,220 @@
 {
+  "Common": {
+    "brand": "Paano",
+    "publicSite": "Public site",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "openArea": "Open area",
+    "openWorkspace": "Open workspace",
+    "serviceHealth": "Service health",
+    "workspace": "workspace",
+    "workspaceTypes": {
+      "brand": "brand",
+      "creator": "creator",
+      "brand_agency": "brand agency",
+      "creator_agency": "creator agency",
+      "admin": "admin"
+    },
+    "roles": {
+      "owner": "owner",
+      "admin": "admin",
+      "member": "member",
+      "viewer": "viewer",
+      "creator": "creator",
+      "agency_manager": "agency manager",
+      "platform_admin": "platform admin"
+    }
+  },
   "Home": {
-    "brand": "Naano",
-    "healthLink": "Health",
-    "eyebrow": "Prototype foundation",
-    "headline": "A clean base for the Naano build.",
-    "intro": "The project is ready for the next phase: a Next.js app with Tailwind CSS, lucide icons, internationalized copy, Drizzle migrations, and a MySQL health check.",
-    "primaryCta": "Check service",
-    "stack": "Next.js + Tailwind + Drizzle + MySQL",
-    "cards": {
-      "i18n": {
-        "title": "Internationalized from day one",
-        "body": "Visible copy is routed through next-intl so additional locales can be added without rewriting the interface."
+    "eyebrow": "B2B LinkedIn creator marketplace",
+    "headline": "Hire vetted LinkedIn creators for sponsored posts.",
+    "intro": "Paano gives brands and creators the foundation for discovery, campaign briefs, manual collaborations, messages, billing placeholders, and admin operations.",
+    "sections": {
+      "companies": {
+        "title": "For companies",
+        "body": "Represent spaces, campaigns, creator shortlists, collaborations, billing placeholders, and workspace settings."
       },
-      "database": {
-        "title": "MySQL-ready data layer",
-        "body": "Drizzle ORM is configured for MySQL with schema files and migration scripts."
+      "creators": {
+        "title": "For creators",
+        "body": "Model creator cards, collaboration requests, draft notes, published post URLs, earnings, referrals, and messages."
       },
-      "health": {
-        "title": "Operational health endpoint",
-        "body": "The API reports whether the service is running and whether the database can answer a query."
+      "marketplace": {
+        "title": "Manual marketplace",
+        "body": "Start with vetted profiles, simple filters, manual admin review, and first-party records before later automation."
       },
-      "ui": {
-        "title": "Prototype-friendly UI",
-        "body": "Tailwind CSS and lucide-react are installed so the first real product screens can move quickly."
+      "operations": {
+        "title": "Operations-ready",
+        "body": "Keep billing ledgers append-only, review queues auditable, and every protected record scoped to a workspace."
       }
+    }
+  },
+  "Dashboard": {
+    "eyebrow": "Workspace selector",
+    "headline": "Choose a demo workspace.",
+    "intro": "Sprint 1 uses deterministic demo identities so brand, creator, agency, and admin routing can be tested before full email/password onboarding lands.",
+    "cardBody": "{userName} signs in as {role} for a {workspaceType} workspace."
+  },
+  "Workspace": {
+    "guard": {
+      "eyebrow": "Permission denied",
+      "title": "This workspace area is protected.",
+      "body": "The route resolved to {state}. Use the dashboard selector to enter as a demo brand, creator, agency, or admin user.",
+      "action": "Open dashboard"
+    },
+    "navigation": {
+      "overview": "Overview",
+      "spaces": "Spaces",
+      "campaigns": "Campaigns",
+      "creators": "Creators",
+      "collaborations": "Collaborations",
+      "messages": "Messages",
+      "billing": "Billing",
+      "settings": "Settings",
+      "myCard": "My Card",
+      "earnings": "Earnings",
+      "affiliate": "Affiliate",
+      "clients": "Clients",
+      "budgets": "Budgets",
+      "reports": "Reports",
+      "roster": "Roster",
+      "opportunities": "Opportunities",
+      "review": "Review",
+      "support": "Support"
+    },
+    "stats": {
+      "brand": {
+        "creatorsActivated": "Creators activated",
+        "postsPublished": "Posts published",
+        "totalCampaigns": "Total campaigns",
+        "openCollaborations": "Open collaborations"
+      },
+      "creator": {
+        "profileCompletion": "Profile completion",
+        "activeCollaborations": "Active collaborations",
+        "pendingRequests": "Pending requests",
+        "availableEarnings": "Available earnings"
+      },
+      "agency": {
+        "clientWorkspaces": "Client workspaces",
+        "openTasks": "Open tasks",
+        "managedBudget": "Managed budget",
+        "reportsReady": "Reports ready"
+      },
+      "admin": {
+        "creatorReviews": "Creator reviews",
+        "brandReviews": "Brand reviews",
+        "openSupportItems": "Open support items",
+        "auditedChanges": "Audited changes"
+      }
+    }
+  },
+  "Brand": {
+    "title": "Brand overview",
+    "description": "Manage spaces, campaigns, creators, manual collaborations, messages, billing placeholders, and workspace settings from a single protected shell.",
+    "empty": {
+      "spaces": {
+        "title": "Spaces",
+        "body": "Create the first workspace-owned space with name, website, description, industry, ICP, locations, and default CTA URL.",
+        "action": "Next action: add create/edit forms in Version 1 Sprint 2."
+      },
+      "campaigns": {
+        "title": "Campaigns",
+        "body": "Campaigns belong to a space and reserve draft, active, completed, and cancelled states for the manual marketplace workflow."
+      },
+      "marketplace": {
+        "title": "Creator marketplace",
+        "body": "Marketplace reads will expose verified creator profiles without leaking creator workspace settings or admin review notes."
+      },
+      "billing": {
+        "title": "Billing",
+        "body": "Wallet and invoice panels are placeholders backed by append-only wallet ledger records."
+      }
+    }
+  },
+  "Creator": {
+    "title": "Creator overview",
+    "description": "Review profile completion, collaboration requests, draft notes, published post submission, earnings placeholders, affiliate link, messages, and settings.",
+    "empty": {
+      "card": {
+        "title": "My Card",
+        "body": "Creator profile fields are isolated behind the creator workspace and can later be published through an explicit public card status."
+      },
+      "collaborations": {
+        "title": "Collaboration requests",
+        "body": "Creators can only see collaborations where their creator profile is attached; brand customer data remains hidden unless a later sprint explicitly shares it."
+      },
+      "earnings": {
+        "title": "Earnings",
+        "body": "Manual earning states are modeled separately from wallet ledger entries so payout automation can arrive later."
+      },
+      "settings": {
+        "title": "Settings",
+        "body": "Payment details and delete account are represented as protected settings surfaces, with destructive actions deferred until full auth is implemented."
+      }
+    }
+  },
+  "Agency": {
+    "title": "Agency workspace",
+    "description": "Agency routes are reserved in the app shell now, while the client workspace and creator roster workflows remain intentionally out of scope until Version 4.",
+    "empty": {
+      "title": "Agency features are reserved",
+      "body": "The data model and navigation can recognize agency workspace types, but Sprint 1 does not expose cross-client data, roster imports, or agency reporting.",
+      "action": "Future version: Version 4 introduces agency workflow records."
+    }
+  },
+  "Admin": {
+    "title": "Admin overview",
+    "description": "Ops users can review creator, brand, campaign, collaboration, and support queues with auditable state changes.",
+    "reviewEmpty": {
+      "title": "Review queue",
+      "body": "Admin review items track subject type, subject ID, review status, assignee, notes, timestamps, and optional workspace ownership.",
+      "action": "Open /admin/review with an admin demo identity."
+    },
+    "sensitiveEmpty": {
+      "title": "Sensitive updates",
+      "body": "State changes must validate transitions server-side and produce audit log records once mutation routes update protected records."
+    }
+  },
+  "AdminReview": {
+    "title": "Review queue",
+    "description": "Reviewable records use new, in_review, approved, rejected, needs_changes, and archived states.",
+    "headers": {
+      "subject": "Subject",
+      "record": "Record",
+      "status": "Status",
+      "nextAction": "Next action"
+    },
+    "rows": {
+      "creator": {
+        "subject": "creator_profile",
+        "record": "Arjun Mehta profile",
+        "status": "in_review",
+        "action": "Verify audience and LinkedIn URL"
+      },
+      "brand": {
+        "subject": "brand",
+        "record": "Acme GTM",
+        "status": "new",
+        "action": "Confirm company website and ICP"
+      },
+      "campaign": {
+        "subject": "campaign",
+        "record": "Developer tools launch",
+        "status": "needs_changes",
+        "action": "Budget and CTA URL required"
+      }
+    },
+    "empty": {
+      "title": "Empty queue state",
+      "body": "When no records need review, this route should show a clear empty state instead of an empty table."
+    }
+  },
+  "AdminSupport": {
+    "title": "Support queue",
+    "description": "Support is reserved as an admin shell route so future campaign disputes and cancellation workflows have a protected destination.",
+    "empty": {
+      "title": "No support items",
+      "body": "Support records are not introduced in Sprint 1. This shell confirms routing, navigation, and permission behavior for the future module."
     }
   }
 }

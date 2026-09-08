@@ -1,80 +1,85 @@
-import { ArrowRight, DatabaseZap, Globe2, HeartPulse, Layers3 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Building2, CircleDollarSign, Search, UserRound } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-const foundation = [
+const sections = [
   {
-    icon: Globe2,
-    key: "i18n",
+    icon: Building2,
+    key: "companies",
   },
   {
-    icon: DatabaseZap,
-    key: "database",
+    icon: UserRound,
+    key: "creators",
   },
   {
-    icon: HeartPulse,
-    key: "health",
+    icon: Search,
+    key: "marketplace",
   },
   {
-    icon: Layers3,
-    key: "ui",
+    icon: CircleDollarSign,
+    key: "operations",
   },
 ] as const;
 
 export default async function Home() {
+  const common = await getTranslations("Common");
   const t = await getTranslations("Home");
 
   return (
-    <main className="min-h-screen bg-[#f7f4ee] text-[#15130f]">
-      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-8 sm:px-8 lg:px-10">
-        <nav className="flex items-center justify-between border-b border-[#d9d1c3] pb-5">
-          <div className="text-xl font-semibold tracking-normal">{t("brand")}</div>
-          <a
-            href="/api/health"
-            className="inline-flex items-center gap-2 rounded-md bg-[#15130f] px-4 py-2 text-sm font-medium text-[#f7f4ee] transition hover:bg-[#343025]"
-          >
-            {t("healthLink")}
-            <HeartPulse className="size-4" aria-hidden="true" />
-          </a>
+    <main className="min-h-screen bg-background text-primary">
+      <section className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-8 lg:px-10">
+        <nav className="flex items-center justify-between border-b border-border pb-5">
+          <div className="text-xl font-semibold">{common("brand")}</div>
+          <div className="flex items-center gap-2">
+            <Link href="/dashboard" className="px-3 py-2 text-sm font-semibold">
+              {common("signIn")}
+            </Link>
+            <Link
+              href="/dashboard"
+              className="bg-primary px-4 py-2 text-sm font-semibold text-background"
+            >
+              {common("signUp")}
+            </Link>
+          </div>
         </nav>
 
-        <div className="grid flex-1 items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="max-w-3xl">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#716753]">
-              {t("eyebrow")}
-            </p>
-            <h1 className="text-5xl font-semibold leading-[1.02] tracking-normal text-balance sm:text-6xl lg:text-7xl">
+        <div className="grid flex-1 items-center gap-12 py-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-normal text-primary/70">{t("eyebrow")}</p>
+            <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[1.04] text-balance sm:text-6xl">
               {t("headline")}
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#5c5445]">
-              {t("intro")}
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/api/health"
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#e94f2f] px-5 py-3 text-base font-semibold text-white transition hover:bg-[#cf4428]"
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-primary/75">{t("intro")}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center justify-center gap-2 bg-primary px-5 py-3 text-base font-semibold text-background transition hover:bg-accent hover:text-primary"
               >
-                {t("primaryCta")}
+                {common("openWorkspace")}
                 <ArrowRight className="size-5" aria-hidden="true" />
-              </a>
-              <div className="rounded-md border border-[#d9d1c3] px-5 py-3 text-base font-medium text-[#3b362d]">
-                {t("stack")}
-              </div>
+              </Link>
+              <Link
+                href="/api/health"
+                className="inline-flex items-center justify-center border border-border bg-surface px-5 py-3 text-base font-semibold"
+              >
+                {common("serviceHealth")}
+              </Link>
             </div>
           </div>
 
           <div className="grid gap-3">
-            {foundation.map(({ icon: Icon, key }) => (
+            {sections.map(({ icon: Icon, key }) => (
               <div
                 key={key}
-                className="grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-[#d9d1c3] bg-white/70 p-5 shadow-sm"
+                className="grid grid-cols-[auto_1fr] gap-4 border border-border bg-surface p-5 shadow-sm"
               >
-                <div className="flex size-11 items-center justify-center rounded-md bg-[#15130f] text-[#f7f4ee]">
+                <div className="flex size-11 items-center justify-center bg-accent text-primary">
                   <Icon className="size-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold">{t(`cards.${key}.title`)}</h2>
-                  <p className="mt-1 text-sm leading-6 text-[#5c5445]">
-                    {t(`cards.${key}.body`)}
+                  <h2 className="text-lg font-semibold">{t(`sections.${key}.title`)}</h2>
+                  <p className="mt-1 text-sm leading-6 text-primary/75">
+                    {t(`sections.${key}.body`)}
                   </p>
                 </div>
               </div>
