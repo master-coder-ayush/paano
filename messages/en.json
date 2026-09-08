@@ -214,8 +214,18 @@
   "Brand": {
     "title": "Brand overview",
     "description": "Manage spaces, campaigns, creators, manual collaborations, messages, billing placeholders, and workspace settings from a single protected shell.",
-    "spaces": { "title": "Spaces", "body": "Workspace-owned destinations for your campaigns." },
-    "campaigns": { "title": "Campaigns", "body": "Create and track campaigns under a space." },
+    "spaces": {
+      "title": "Spaces",
+      "body": "Workspace-owned destinations for your campaigns."
+    },
+    "campaigns": {
+      "title": "Campaigns",
+      "body": "Create and track campaigns under a space."
+    },
+    "marketplace": {
+      "title": "Creator marketplace",
+      "body": "Browse verified creators by topic, audience, country, and fixed post rate."
+    },
     "empty": {
       "spaces": {
         "title": "Spaces",
@@ -236,8 +246,19 @@
       }
     }
   },
-  "BrandSpaces": { "title": "Spaces", "newTitle": "Create a space", "description": "Organize campaigns around a product, audience, or destination.", "listTitle": "Your spaces", "new": "New space" },
-  "BrandCampaigns": { "title": "Campaigns", "newTitle": "Create a campaign", "description": "Plan campaigns under a specific space with clear status and budget ownership.", "new": "New campaign" },
+  "BrandSpaces": {
+    "title": "Spaces",
+    "newTitle": "Create a space",
+    "description": "Organize campaigns around a product, audience, or destination.",
+    "listTitle": "Your spaces",
+    "new": "New space"
+  },
+  "BrandCampaigns": {
+    "title": "Campaigns",
+    "newTitle": "Create a campaign",
+    "description": "Plan campaigns under a specific space with clear status and budget ownership.",
+    "new": "New campaign"
+  },
   "Creator": {
     "title": "Creator overview",
     "description": "Review profile completion, collaboration requests, draft notes, published post submission, earnings placeholders, affiliate link, messages, and settings.",
@@ -259,6 +280,59 @@
         "body": "Payment details and delete account are represented as protected settings surfaces, with destructive actions deferred until full auth is implemented."
       }
     }
+  },
+  "Marketplace": {
+    "title": "Creator marketplace",
+    "description": "Find verified LinkedIn creators by topic, location, audience, and fixed post rate.",
+    "searchPlaceholder": "Search creators",
+    "allTopics": "All topics",
+    "countryPlaceholder": "Country",
+    "filter": "Filter",
+    "verified": "Verified",
+    "followers": "followers",
+    "perPost": "per post",
+    "viewProfile": "View profile",
+    "empty": "No creators match these filters.",
+    "notFound": "Creator not found",
+    "notFoundBody": "This creator is unavailable or has not published a card.",
+    "back": "Back to creators",
+    "linkedin": "LinkedIn",
+    "topicsLabel": "Topics",
+    "audience": "Audience",
+    "rate": "Rate"
+  },
+  "CreatorCard": {
+    "title": "My Card",
+    "description": "Edit your creator profile and preview the public-facing card.",
+    "missing": "Profile not started",
+    "preview": "Public preview",
+    "previewBody": "Only published card fields are visible to brands and public visitors.",
+    "openPublic": "Open public card",
+    "edit": "Edit profile",
+    "editTitle": "Profile settings",
+    "editDescription": "Keep your marketplace details accurate and ready for review.",
+    "linkedinUrl": "LinkedIn URL",
+    "headline": "Headline",
+    "country": "Country",
+    "followerCount": "Follower count",
+    "price": "Price per post (USD)",
+    "bio": "Bio",
+    "topics": "Topics (comma separated)",
+    "save": "Save profile",
+    "saving": "Saving…",
+    "saved": "Profile saved.",
+    "error": "Could not save profile.",
+    "followers": "followers",
+    "perPost": "per post"
+  },
+  "PublicCard": {
+    "eyebrow": "Creator card",
+    "topics": "Topics:",
+    "audience": "Audience:",
+    "rate": "Rate:",
+    "followers": "followers",
+    "perPost": "per post",
+    "linkedin": "View LinkedIn profile"
   },
   "Agency": {
     "title": "Agency workspace",

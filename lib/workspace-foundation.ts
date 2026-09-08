@@ -127,7 +127,7 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "overview", href: "/brand" },
     { labelKey: "spaces", href: "/brand/spaces" },
     { labelKey: "campaigns", href: "/brand/campaigns" },
-    { labelKey: "creators", href: "/brand#creators" },
+    { labelKey: "creators", href: "/brand/creators" },
     { labelKey: "collaborations", href: "/brand#collaborations" },
     { labelKey: "messages", href: "/brand#messages" },
     { labelKey: "billing", href: "/brand#billing" },
@@ -135,12 +135,12 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
   ],
   creator: [
     { labelKey: "overview", href: "/creator" },
-    { labelKey: "myCard", href: "/creator#card" },
+    { labelKey: "myCard", href: "/creator/card" },
     { labelKey: "collaborations", href: "/creator#collaborations" },
     { labelKey: "earnings", href: "/creator#earnings" },
     { labelKey: "affiliate", href: "/creator#affiliate" },
     { labelKey: "messages", href: "/creator#messages" },
-    { labelKey: "settings", href: "/creator#settings" },
+    { labelKey: "settings", href: "/creator/settings/profile" },
   ],
   brand_agency: [
     { labelKey: "overview", href: "/agency" },

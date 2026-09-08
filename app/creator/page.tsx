@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { EmptyState, StatGrid, WorkspaceGuard, WorkspaceShell } from "@/components/workspace-shell";
 import { userFromDemoKey } from "@/lib/workspace-foundation";
+import Link from "next/link";
 
 export default async function CreatorPage({ searchParams }: PageProps<"/creator">) {
   const t = await getTranslations("Creator");
@@ -18,6 +19,10 @@ export default async function CreatorPage({ searchParams }: PageProps<"/creator"
         >
           <div className="grid gap-5">
             <StatGrid area="creator" />
+            <Link href={`/creator/card?as=${activeUser.key}`} className="border border-border bg-surface p-5">
+              <h2 className="font-semibold">{t("empty.card.title")}</h2>
+              <p className="mt-2 text-sm text-primary/70">{t("empty.card.body")}</p>
+            </Link>
             <section className="grid gap-4 lg:grid-cols-2">
               <EmptyState
                 title={t("empty.card.title")}

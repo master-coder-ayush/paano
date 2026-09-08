@@ -39,6 +39,13 @@ export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
                 </p>
               </Link>
               <Link
+                href={`/brand/creators?as=${activeUser.key}`}
+                className="border border-border bg-surface p-5"
+              >
+                <h2 className="font-semibold">{t("marketplace.title")}</h2>
+                <p className="mt-2 text-sm text-primary/70">{t("marketplace.body")}</p>
+              </Link>
+              <Link
                 href={`/brand/campaigns?as=${activeUser.key}`}
                 className="border border-border bg-surface p-5"
               >
