@@ -89,7 +89,9 @@ export const users = mysqlTable(
     email: varchar("email", { length: 255 }).notNull(),
     emailVerifiedAt: timestamp("email_verified_at"),
     passwordHash: varchar("password_hash", { length: 255 }).notNull(),
-    status: varchar("status", { length: 40 }).$type<(typeof userStatuses)[number]>().notNull(),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof userStatuses)[number]>()
+      .notNull(),
     lastLoginAt: timestamp("last_login_at"),
     ...timestamps,
   },
@@ -103,9 +105,13 @@ export const authAccounts = mysqlTable(
   "auth_accounts",
   {
     id: id(),
-    userId: varchar("user_id", { length: 36 }).notNull().references(() => users.id),
+    userId: varchar("user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
     provider: varchar("provider", { length: 40 }).notNull(),
-    providerAccountId: varchar("provider_account_id", { length: 255 }).notNull(),
+    providerAccountId: varchar("provider_account_id", {
+      length: 255,
+    }).notNull(),
     ...timestamps,
   },
   (table) => ({
@@ -121,15 +127,24 @@ export const workspaces = mysqlTable(
   "workspaces",
   {
     id: id(),
-    type: varchar("type", { length: 40 }).$type<(typeof workspaceTypes)[number]>().notNull(),
+    type: varchar("type", { length: 40 })
+      .$type<(typeof workspaceTypes)[number]>()
+      .notNull(),
     name: varchar("name", { length: 180 }).notNull(),
-    status: varchar("status", { length: 40 }).$type<(typeof workspaceStatuses)[number]>().notNull(),
-    ownerUserId: varchar("owner_user_id", { length: 36 }).notNull().references(() => users.id),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof workspaceStatuses)[number]>()
+      .notNull(),
+    ownerUserId: varchar("owner_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
     ...timestamps,
   },
   (table) => ({
     ownerIdx: index("workspaces_owner_user_id_idx").on(table.ownerUserId),
-    typeStatusIdx: index("workspaces_type_status_idx").on(table.type, table.status),
+    typeStatusIdx: index("workspaces_type_status_idx").on(
+      table.type,
+      table.status,
+    ),
   }),
 );
 
@@ -137,8 +152,12 @@ export const authTokens = mysqlTable(
   "auth_tokens",
   {
     id: id(),
-    userId: varchar("user_id", { length: 36 }).notNull().references(() => users.id),
-    workspaceId: varchar("workspace_id", { length: 36 }).references(() => workspaces.id),
+    userId: varchar("user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    workspaceId: varchar("workspace_id", { length: 36 }).references(
+      () => workspaces.id,
+    ),
     tokenHash: varchar("token_hash", { length: 128 }).notNull(),
     type: varchar("type", { length: 40 }).notNull(),
     scopes: json("scopes").$type<string[]>().notNull(),
@@ -158,18 +177,28 @@ export const userOnboardingStates = mysqlTable(
   "user_onboarding_states",
   {
     id: id(),
-    userId: varchar("user_id", { length: 36 }).notNull().references(() => users.id),
-    selectedRole: varchar("selected_role", { length: 40 }).$type<"brand" | "creator">(),
-    status: varchar("status", { length: 40 }).$type<(typeof onboardingStatuses)[number]>().notNull(),
+    userId: varchar("user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    selectedRole: varchar("selected_role", { length: 40 }).$type<
+      "brand" | "creator"
+    >(),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof onboardingStatuses)[number]>()
+      .notNull(),
     currentStep: varchar("current_step", { length: 80 }).notNull(),
-    profileDraft: json("profile_draft").$type<Record<string, unknown>>().notNull(),
+    profileDraft: json("profile_draft")
+      .$type<Record<string, unknown>>()
+      .notNull(),
     completedAt: timestamp("completed_at"),
     ...timestamps,
   },
   (table) => ({
     userIdx: uniqueIndex("user_onboarding_states_user_id_idx").on(table.userId),
     statusIdx: index("user_onboarding_states_status_idx").on(table.status),
-    roleIdx: index("user_onboarding_states_selected_role_idx").on(table.selectedRole),
+    roleIdx: index("user_onboarding_states_selected_role_idx").on(
+      table.selectedRole,
+    ),
   }),
 );
 
@@ -177,9 +206,15 @@ export const workspaceMembers = mysqlTable(
   "workspace_members",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
-    userId: varchar("user_id", { length: 36 }).notNull().references(() => users.id),
-    role: varchar("role", { length: 40 }).$type<(typeof workspaceRoles)[number]>().notNull(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    userId: varchar("user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    role: varchar("role", { length: 40 })
+      .$type<(typeof workspaceRoles)[number]>()
+      .notNull(),
     status: varchar("status", { length: 40 }).notNull(),
     ...timestamps,
   },
@@ -189,7 +224,10 @@ export const workspaceMembers = mysqlTable(
       table.userId,
     ),
     userIdx: index("workspace_members_user_id_idx").on(table.userId),
-    roleStatusIdx: index("workspace_members_role_status_idx").on(table.role, table.status),
+    roleStatusIdx: index("workspace_members_role_status_idx").on(
+      table.role,
+      table.status,
+    ),
   }),
 );
 
@@ -197,9 +235,13 @@ export const workspaceInvites = mysqlTable(
   "workspace_invites",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
     email: varchar("email", { length: 255 }).notNull(),
-    role: varchar("role", { length: 40 }).$type<(typeof workspaceRoles)[number]>().notNull(),
+    role: varchar("role", { length: 40 })
+      .$type<(typeof workspaceRoles)[number]>()
+      .notNull(),
     tokenHash: varchar("token_hash", { length: 128 }).notNull(),
     status: varchar("status", { length: 40 }).notNull(),
     expiresAt: timestamp("expires_at").notNull(),
@@ -207,7 +249,9 @@ export const workspaceInvites = mysqlTable(
     ...timestamps,
   },
   (table) => ({
-    tokenIdx: uniqueIndex("workspace_invites_token_hash_idx").on(table.tokenHash),
+    tokenIdx: uniqueIndex("workspace_invites_token_hash_idx").on(
+      table.tokenHash,
+    ),
     workspaceEmailIdx: index("workspace_invites_workspace_email_idx").on(
       table.workspaceId,
       table.email,
@@ -219,7 +263,9 @@ export const brands = mysqlTable(
   "brands",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
     companyName: varchar("company_name", { length: 180 }).notNull(),
     website: varchar("website", { length: 255 }),
     industry: varchar("industry", { length: 120 }),
@@ -238,16 +284,27 @@ export const creators = mysqlTable(
   "creators",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
-    userId: varchar("user_id", { length: 36 }).notNull().references(() => users.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    userId: varchar("user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
     status: varchar("status", { length: 40 }).notNull(),
-    verificationStatus: varchar("verification_status", { length: 40 }).notNull(),
+    verificationStatus: varchar("verification_status", {
+      length: 40,
+    }).notNull(),
     ...timestamps,
   },
   (table) => ({
-    workspaceIdx: uniqueIndex("creators_workspace_id_idx").on(table.workspaceId),
+    workspaceIdx: uniqueIndex("creators_workspace_id_idx").on(
+      table.workspaceId,
+    ),
     userIdx: index("creators_user_id_idx").on(table.userId),
-    statusIdx: index("creators_status_idx").on(table.status, table.verificationStatus),
+    statusIdx: index("creators_status_idx").on(
+      table.status,
+      table.verificationStatus,
+    ),
   }),
 );
 
@@ -255,7 +312,9 @@ export const creatorProfiles = mysqlTable(
   "creator_profiles",
   {
     id: id(),
-    creatorId: varchar("creator_id", { length: 36 }).notNull().references(() => creators.id),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
     publicSlug: varchar("public_slug", { length: 120 }).notNull(),
     name: varchar("name", { length: 160 }).notNull(),
     linkedinUrl: varchar("linkedin_url", { length: 255 }).notNull(),
@@ -264,15 +323,22 @@ export const creatorProfiles = mysqlTable(
     country: varchar("country", { length: 80 }),
     topics: json("topics").$type<string[]>().notNull(),
     followerCount: int("follower_count").notNull(),
-    pricePerPostAmount: decimal("price_per_post_amount", { precision: 10, scale: 2 }).notNull(),
+    pricePerPostAmount: decimal("price_per_post_amount", {
+      precision: 10,
+      scale: 2,
+    }).notNull(),
     currency: varchar("currency", { length: 3 }).notNull(),
     publicCardStatus: varchar("public_card_status", { length: 40 }).notNull(),
     publishedAt: timestamp("published_at"),
     ...timestamps,
   },
   (table) => ({
-    slugIdx: uniqueIndex("creator_profiles_public_slug_idx").on(table.publicSlug),
-    creatorIdx: uniqueIndex("creator_profiles_creator_id_idx").on(table.creatorId),
+    slugIdx: uniqueIndex("creator_profiles_public_slug_idx").on(
+      table.publicSlug,
+    ),
+    creatorIdx: uniqueIndex("creator_profiles_creator_id_idx").on(
+      table.creatorId,
+    ),
     countryIdx: index("creator_profiles_country_idx").on(table.country),
   }),
 );
@@ -281,8 +347,12 @@ export const spaces = mysqlTable(
   "spaces",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
-    brandId: varchar("brand_id", { length: 36 }).notNull().references(() => brands.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    brandId: varchar("brand_id", { length: 36 })
+      .notNull()
+      .references(() => brands.id),
     name: varchar("name", { length: 160 }).notNull(),
     website: varchar("website", { length: 255 }),
     description: text("description"),
@@ -304,12 +374,21 @@ export const campaigns = mysqlTable(
   "campaigns",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
-    brandId: varchar("brand_id", { length: 36 }).notNull().references(() => brands.id),
-    spaceId: varchar("space_id", { length: 36 }).notNull().references(() => spaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    brandId: varchar("brand_id", { length: 36 })
+      .notNull()
+      .references(() => brands.id),
+    spaceId: varchar("space_id", { length: 36 })
+      .notNull()
+      .references(() => spaces.id),
     name: varchar("name", { length: 180 }).notNull(),
     goal: text("goal"),
-    budgetAmount: decimal("budget_amount", { precision: 12, scale: 2 }).notNull(),
+    budgetAmount: decimal("budget_amount", {
+      precision: 12,
+      scale: 2,
+    }).notNull(),
     currency: varchar("currency", { length: 3 }).notNull(),
     targetIcp: text("target_icp"),
     targetRegions: json("target_regions").$type<string[]>().notNull(),
@@ -321,7 +400,10 @@ export const campaigns = mysqlTable(
     ...timestamps,
   },
   (table) => ({
-    workspaceStatusIdx: index("campaigns_workspace_status_idx").on(table.workspaceId, table.status),
+    workspaceStatusIdx: index("campaigns_workspace_status_idx").on(
+      table.workspaceId,
+      table.status,
+    ),
     spaceIdx: index("campaigns_space_id_idx").on(table.spaceId),
   }),
 );
@@ -330,10 +412,18 @@ export const collaborations = mysqlTable(
   "collaborations",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
-    brandId: varchar("brand_id", { length: 36 }).notNull().references(() => brands.id),
-    campaignId: varchar("campaign_id", { length: 36 }).notNull().references(() => campaigns.id),
-    creatorId: varchar("creator_id", { length: 36 }).notNull().references(() => creators.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    brandId: varchar("brand_id", { length: 36 })
+      .notNull()
+      .references(() => brands.id),
+    campaignId: varchar("campaign_id", { length: 36 })
+      .notNull()
+      .references(() => campaigns.id),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
     deliverableNotes: text("deliverable_notes"),
     publishedPostUrl: varchar("published_post_url", { length: 255 }),
     priceAmount: decimal("price_amount", { precision: 10, scale: 2 }).notNull(),
@@ -358,7 +448,9 @@ export const messageThreads = mysqlTable(
   "message_threads",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
     entityType: varchar("entity_type", { length: 80 }).notNull(),
     entityId: varchar("entity_id", { length: 36 }).notNull(),
     status: varchar("status", { length: 40 }).notNull(),
@@ -377,10 +469,16 @@ export const messages = mysqlTable(
   "messages",
   {
     id: id(),
-    threadId: varchar("thread_id", { length: 36 }).notNull().references(() => messageThreads.id),
-    senderUserId: varchar("sender_user_id", { length: 36 }).notNull().references(() => users.id),
+    threadId: varchar("thread_id", { length: 36 })
+      .notNull()
+      .references(() => messageThreads.id),
+    senderUserId: varchar("sender_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
     body: text("body").notNull(),
-    attachments: json("attachments").$type<Array<{ name: string; url: string }>>().notNull(),
+    attachments: json("attachments")
+      .$type<Array<{ name: string; url: string }>>()
+      .notNull(),
     ...timestamps,
   },
   (table) => ({
@@ -396,7 +494,9 @@ export const notifications = mysqlTable(
     recipientUserId: varchar("recipient_user_id", { length: 36 })
       .notNull()
       .references(() => users.id),
-    workspaceId: varchar("workspace_id", { length: 36 }).references(() => workspaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 }).references(
+      () => workspaces.id,
+    ),
     type: varchar("type", { length: 80 }).notNull(),
     entityType: varchar("entity_type", { length: 80 }),
     entityId: varchar("entity_id", { length: 36 }),
@@ -413,7 +513,10 @@ export const notifications = mysqlTable(
       table.status,
     ),
     workspaceIdx: index("notifications_workspace_id_idx").on(table.workspaceId),
-    entityIdx: index("notifications_entity_idx").on(table.entityType, table.entityId),
+    entityIdx: index("notifications_entity_idx").on(
+      table.entityType,
+      table.entityId,
+    ),
   }),
 );
 
@@ -421,7 +524,9 @@ export const emailDeliveryAttempts = mysqlTable(
   "email_delivery_attempts",
   {
     id: id(),
-    recipientUserId: varchar("recipient_user_id", { length: 36 }).references(() => users.id),
+    recipientUserId: varchar("recipient_user_id", { length: 36 }).references(
+      () => users.id,
+    ),
     recipientEmail: varchar("recipient_email", { length: 255 }).notNull(),
     template: varchar("template", { length: 80 }).notNull(),
     status: varchar("status", { length: 40 }).notNull(),
@@ -431,9 +536,13 @@ export const emailDeliveryAttempts = mysqlTable(
     ...timestamps,
   },
   (table) => ({
-    recipientIdx: index("email_delivery_attempts_recipient_idx").on(table.recipientEmail),
+    recipientIdx: index("email_delivery_attempts_recipient_idx").on(
+      table.recipientEmail,
+    ),
     statusIdx: index("email_delivery_attempts_status_idx").on(table.status),
-    templateIdx: index("email_delivery_attempts_template_idx").on(table.template),
+    templateIdx: index("email_delivery_attempts_template_idx").on(
+      table.template,
+    ),
   }),
 );
 
@@ -441,16 +550,17 @@ export const walletAccounts = mysqlTable(
   "wallet_accounts",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).notNull().references(() => workspaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
     currency: varchar("currency", { length: 3 }).notNull(),
     status: varchar("status", { length: 40 }).notNull(),
     ...timestamps,
   },
   (table) => ({
-    workspaceCurrencyIdx: uniqueIndex("wallet_accounts_workspace_currency_idx").on(
-      table.workspaceId,
-      table.currency,
-    ),
+    workspaceCurrencyIdx: uniqueIndex(
+      "wallet_accounts_workspace_currency_idx",
+    ).on(table.workspaceId, table.currency),
   }),
 );
 
@@ -470,7 +580,9 @@ export const walletLedgerEntries = mysqlTable(
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
   (table) => ({
-    walletIdx: index("wallet_ledger_entries_wallet_id_idx").on(table.walletAccountId),
+    walletIdx: index("wallet_ledger_entries_wallet_id_idx").on(
+      table.walletAccountId,
+    ),
     statusIdx: index("wallet_ledger_entries_status_idx").on(table.status),
   }),
 );
@@ -479,19 +591,32 @@ export const adminReviewItems = mysqlTable(
   "admin_review_items",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).references(() => workspaces.id),
+    workspaceId: varchar("workspace_id", { length: 36 }).references(
+      () => workspaces.id,
+    ),
     subjectType: varchar("subject_type", { length: 80 }).notNull(),
     subjectId: varchar("subject_id", { length: 36 }).notNull(),
-    status: varchar("status", { length: 40 }).$type<(typeof reviewStatuses)[number]>().notNull(),
-    assigneeId: varchar("assignee_id", { length: 36 }).references(() => users.id),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof reviewStatuses)[number]>()
+      .notNull(),
+    assigneeId: varchar("assignee_id", { length: 36 }).references(
+      () => users.id,
+    ),
     notes: text("notes"),
     ...timestamps,
   },
   (table) => ({
     statusIdx: index("admin_review_items_status_idx").on(table.status),
-    assigneeIdx: index("admin_review_items_assignee_id_idx").on(table.assigneeId),
-    subjectIdx: index("admin_review_items_subject_idx").on(table.subjectType, table.subjectId),
-    workspaceIdx: index("admin_review_items_workspace_id_idx").on(table.workspaceId),
+    assigneeIdx: index("admin_review_items_assignee_id_idx").on(
+      table.assigneeId,
+    ),
+    subjectIdx: index("admin_review_items_subject_idx").on(
+      table.subjectType,
+      table.subjectId,
+    ),
+    workspaceIdx: index("admin_review_items_workspace_id_idx").on(
+      table.workspaceId,
+    ),
   }),
 );
 
@@ -499,8 +624,12 @@ export const auditLogs = mysqlTable(
   "audit_logs",
   {
     id: id(),
-    workspaceId: varchar("workspace_id", { length: 36 }).references(() => workspaces.id),
-    actorUserId: varchar("actor_user_id", { length: 36 }).references(() => users.id),
+    workspaceId: varchar("workspace_id", { length: 36 }).references(
+      () => workspaces.id,
+    ),
+    actorUserId: varchar("actor_user_id", { length: 36 }).references(
+      () => users.id,
+    ),
     action: varchar("action", { length: 120 }).notNull(),
     entityType: varchar("entity_type", { length: 80 }).notNull(),
     entityId: varchar("entity_id", { length: 36 }).notNull(),
@@ -510,6 +639,149 @@ export const auditLogs = mysqlTable(
   (table) => ({
     workspaceIdx: index("audit_logs_workspace_id_idx").on(table.workspaceId),
     actorIdx: index("audit_logs_actor_user_id_idx").on(table.actorUserId),
-    entityIdx: index("audit_logs_entity_idx").on(table.entityType, table.entityId),
+    entityIdx: index("audit_logs_entity_idx").on(
+      table.entityType,
+      table.entityId,
+    ),
+  }),
+);
+
+export const billingProfiles = mysqlTable(
+  "billing_profiles",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    legalName: varchar("legal_name", { length: 180 }).notNull(),
+    taxCountry: varchar("tax_country", { length: 2 }),
+    status: varchar("status", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: uniqueIndex("billing_profiles_workspace_id_idx").on(
+      table.workspaceId,
+    ),
+  }),
+);
+
+export const invoiceRecords = mysqlTable(
+  "invoice_records",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    invoiceNumber: varchar("invoice_number", { length: 80 }).notNull(),
+    amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    issuedAt: timestamp("issued_at"),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceStatusIdx: index("invoice_records_workspace_status_idx").on(
+      table.workspaceId,
+      table.status,
+    ),
+    numberIdx: uniqueIndex("invoice_records_number_idx").on(
+      table.invoiceNumber,
+    ),
+  }),
+);
+
+export const paymentRecords = mysqlTable(
+  "payment_records",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    walletAccountId: varchar("wallet_account_id", { length: 36 }).references(
+      () => walletAccounts.id,
+    ),
+    amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    reference: varchar("reference", { length: 120 }),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceStatusIdx: index("payment_records_workspace_status_idx").on(
+      table.workspaceId,
+      table.status,
+    ),
+  }),
+);
+
+export const creatorEarnings = mysqlTable(
+  "creator_earnings",
+  {
+    id: id(),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    collaborationId: varchar("collaboration_id", { length: 36 }).references(
+      () => collaborations.id,
+    ),
+    sourceType: varchar("source_type", { length: 40 }).notNull(),
+    sourceId: varchar("source_id", { length: 36 }),
+    amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    creatorStatusIdx: index("creator_earnings_creator_status_idx").on(
+      table.creatorId,
+      table.status,
+    ),
+    collaborationIdx: index("creator_earnings_collaboration_id_idx").on(
+      table.collaborationId,
+    ),
+  }),
+);
+
+export const withdrawalRequests = mysqlTable(
+  "withdrawal_requests",
+  {
+    id: id(),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    requestedAt: timestamp("requested_at").defaultNow().notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    creatorStatusIdx: index("withdrawal_requests_creator_status_idx").on(
+      table.creatorId,
+      table.status,
+    ),
+  }),
+);
+
+export const payoutRecords = mysqlTable(
+  "payout_records",
+  {
+    id: id(),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    withdrawalRequestId: varchar("withdrawal_request_id", {
+      length: 36,
+    }).references(() => withdrawalRequests.id),
+    amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    creatorStatusIdx: index("payout_records_creator_status_idx").on(
+      table.creatorId,
+      table.status,
+    ),
   }),
 );

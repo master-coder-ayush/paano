@@ -58,6 +58,7 @@ const navIcons = {
   opportunities: Inbox,
   review: ShieldCheck,
   support: MessageSquare,
+  payouts: Wallet,
 };
 
 type AuthorizedWorkspace = NonNullable<ReturnType<typeof authorizeWorkspace>["workspace"]>;

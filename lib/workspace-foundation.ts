@@ -130,14 +130,14 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "creators", href: "/brand/creators" },
     { labelKey: "collaborations", href: "/brand/collaborations" },
     { labelKey: "messages", href: "/brand/messages" },
-    { labelKey: "billing", href: "/brand#billing" },
+    { labelKey: "billing", href: "/brand/billing" },
     { labelKey: "settings", href: "/brand#settings" },
   ],
   creator: [
     { labelKey: "overview", href: "/creator" },
     { labelKey: "myCard", href: "/creator/card" },
     { labelKey: "collaborations", href: "/creator/collaborations" },
-    { labelKey: "earnings", href: "/creator#earnings" },
+    { labelKey: "earnings", href: "/creator/earnings" },
     { labelKey: "affiliate", href: "/creator#affiliate" },
     { labelKey: "messages", href: "/creator/messages" },
     { labelKey: "settings", href: "/creator/settings/profile" },
@@ -157,6 +157,8 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
   admin: [
     { labelKey: "overview", href: "/admin" },
     { labelKey: "review", href: "/admin/review" },
+    { labelKey: "billing", href: "/admin/billing" },
+    { labelKey: "payouts", href: "/admin/payouts" },
     { labelKey: "support", href: "/admin/support" },
   ],
 };
