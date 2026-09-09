@@ -1,0 +1,868 @@
+{
+  "Language": {
+    "label": "Idioma",
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés"
+  },
+  "Common": {
+    "brand": "Paano",
+    "publicSite": "Sitio público",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "openArea": "Abrir área",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "continue": "Continuar",
+    "submit": "Enviar",
+    "signOut": "Cerrar sesión",
+    "backToLogin": "Volver al inicio de sesión",
+    "workspace": "espacio de trabajo",
+    "language": {
+      "label": "Idioma",
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés"
+    },
+    "workspaceTypes": {
+      "brand": "marca",
+      "creator": "creador",
+      "brand_agency": "agencia de marca",
+      "creator_agency": "agencia de creadores",
+      "admin": "administrador"
+    },
+    "roles": {
+      "owner": "propietario",
+      "admin": "administrador",
+      "member": "miembro",
+      "viewer": "visualizador",
+      "creator": "creador",
+      "agency_manager": "gestor de agencia",
+      "platform_admin": "administrador de la plataforma"
+    }
+  },
+  "Dashboard": {
+    "eyebrow": "Selector de espacio de trabajo",
+    "headline": "Elige un espacio de trabajo de demostración.",
+    "intro": "Usa un espacio de trabajo de demostración o completa el registro y la incorporación para entrar como marca o creador.",
+    "cardBody": "{userName} inicia sesión como {role} en un espacio de trabajo de tipo {workspaceType}."
+  },
+  "Auth": {
+    "login": {
+      "eyebrow": "Te damos la bienvenida de nuevo",
+      "title": "Inicia sesión en tu espacio de trabajo.",
+      "body": "Usa tu correo electrónico y contraseña para volver a un espacio de trabajo de marca, creador, agencia o administrador.",
+      "submit": "Iniciar sesión",
+      "registerPrompt": "¿Necesitas una cuenta?",
+      "registerLink": "Crear una",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
+    },
+    "register": {
+      "eyebrow": "Crear cuenta",
+      "title": "Empieza con correo electrónico y contraseña.",
+      "body": "Los nuevos usuarios eligen un rol de marca o creador antes de entrar en la aplicación.",
+      "submit": "Crear cuenta",
+      "loginPrompt": "¿Ya tienes una cuenta?",
+      "loginLink": "Iniciar sesión"
+    },
+    "forgotPassword": {
+      "eyebrow": "Recuperación de cuenta",
+      "title": "Solicita un restablecimiento de contraseña.",
+      "body": "Introduce el correo electrónico de tu cuenta para crear una solicitud de restablecimiento.",
+      "submit": "Solicitar restablecimiento",
+      "sent": "Si la dirección es válida, se ha aceptado la solicitud de restablecimiento."
+    },
+    "resetPassword": {
+      "eyebrow": "Restablecer contraseña",
+      "title": "Establece una nueva contraseña.",
+      "body": "Usa un token de restablecimiento y una nueva contraseña de al menos ocho caracteres.",
+      "token": "Token de restablecimiento",
+      "submit": "Actualizar contraseña"
+    },
+    "logout": {
+      "eyebrow": "Cerrar sesión",
+      "title": "Finaliza esta sesión.",
+      "body": "Cerrar sesión elimina las cookies de sesión del prototipo de este navegador.",
+      "submit": "Cerrar sesión"
+    }
+  },
+  "Onboarding": {
+    "role": {
+      "eyebrow": "Selección de rol",
+      "title": "Elige cómo usarás Paano.",
+      "body": "Los nuevos usuarios deben elegir entre marca o creador antes de entrar en la aplicación protegida.",
+      "brandTitle": "Marca",
+      "brandBody": "Gestiona campañas, administra espacios, selecciona creadores y supervisa colaboraciones manuales.",
+      "creatorTitle": "Creador",
+      "creatorBody": "Crea una tarjeta de creador, recibe solicitudes de colaboración y gestiona marcadores de ingresos.",
+      "submit": "Continuar"
+    },
+    "brand": {
+      "eyebrow": "Incorporación de marca",
+      "title": "Configura tu espacio de trabajo de marca.",
+      "body": "Cuéntanos quién es la empresa y qué audiencia quieres alcanzar con creadores de LinkedIn.",
+      "companyName": "Nombre de la empresa",
+      "website": "Sitio web",
+      "websitePlaceholder": "https://example.com",
+      "industry": "Sector",
+      "industryPlaceholder": "Selecciona un sector",
+      "industries": {
+        "b2bSaas": "SaaS B2B",
+        "fintech": "Fintech",
+        "healthcare": "Salud",
+        "ecommerce": "Comercio electrónico",
+        "education": "Educación",
+        "professionalServices": "Servicios profesionales",
+        "developerTools": "Herramientas para desarrolladores",
+        "marketingAdvertising": "Marketing y publicidad"
+      },
+      "targetIcp": "ICP objetivo",
+      "submit": "Finalizar incorporación de marca"
+    },
+    "creator": {
+      "eyebrow": "Incorporación de creador",
+      "title": "Configura tu perfil de creador.",
+      "body": "Introduce los datos básicos del perfil de LinkedIn necesarios para una tarjeta manual del marketplace.",
+      "linkedinUrl": "URL de LinkedIn",
+      "headline": "Titular",
+      "bio": "Biografía",
+      "topics": "Temas",
+      "country": "País",
+      "followerCount": "Número de seguidores",
+      "pricePerPostAmount": "Precio inicial por publicación",
+      "topicsPlaceholder": "DevTools, SaaS B2B, ventas lideradas por fundadores",
+      "submit": "Finalizar incorporación de creador"
+    }
+  },
+  "Notifications": {
+    "title": "Notificaciones",
+    "description": "Consulta la actividad de la cuenta y del espacio de trabajo desde un único centro protegido.",
+    "emptyTitle": "No hay notificaciones",
+    "emptyBody": "Los nuevos eventos de incorporación y del espacio de trabajo aparecerán aquí cuando se conecten los flujos persistentes.",
+    "badgeLabel": "{count} notificaciones sin leer",
+    "unread": "sin leer",
+    "headers": {
+      "type": "Tipo",
+      "status": "Estado",
+      "entity": "Entidad",
+      "action": "Acción"
+    },
+    "open": "Abrir",
+    "rows": {
+      "brandOnboarding": {
+        "type": "incorporación_completada",
+        "status": "sin leer",
+        "entity": "marca",
+        "action": "Abrir resumen de marca"
+      },
+      "creatorReview": {
+        "type": "perfil_de_creador_en_revisión",
+        "status": "sin leer",
+        "entity": "perfil_de_creador",
+        "action": "Abrir resumen del creador"
+      },
+      "adminReview": {
+        "type": "cola_de_revisión_actualizada",
+        "status": "sin leer",
+        "entity": "elemento_de_revisión_de_admin",
+        "action": "Abrir cola de revisión"
+      },
+      "invitation": {
+        "type": "invitación_de_creador",
+        "entity": "colaboración"
+      },
+      "draftSubmitted": {
+        "type": "borrador_enviado",
+        "entity": "colaboración"
+      },
+      "approval": {
+        "type": "borrador_aprobado",
+        "entity": "colaboración"
+      },
+      "revisionRequest": {
+        "type": "revisión_solicitada",
+        "entity": "colaboración"
+      },
+      "publishedUrl": {
+        "type": "URL_publicada_enviada",
+        "entity": "publicación_publicada"
+      },
+      "completion": {
+        "type": "colaboración_completada",
+        "entity": "colaboración"
+      },
+      "withdrawalRequest": {
+        "type": "retiro_solicitado",
+        "entity": "solicitud_de_retiro"
+      },
+      "creatorProfile": {
+        "type": "revisión_de_perfil_de_creador",
+        "entity": "perfil_de_creador",
+        "action": "Abrir cola de revisión de creadores"
+      },
+      "paymentManual": {
+        "type": "actualización_manual_de_pago",
+        "entity": "registro_de_pago",
+        "action": "Abrir operaciones de facturación"
+      }
+    }
+  },
+  "Workspace": {
+    "guard": {
+      "eyebrow": "Permiso denegado",
+      "title": "Esta área del espacio de trabajo está protegida.",
+      "body": "La ruta se resolvió en {state}. Usa el selector del panel para entrar como usuario de demostración de marca, creador, agencia o administrador.",
+      "action": "Abrir panel"
+    },
+    "navigation": {
+      "overview": "Resumen",
+      "spaces": "Espacios",
+      "campaigns": "Campañas",
+      "creators": "Creadores",
+      "collaborations": "Colaboraciones",
+      "results": "Resultados",
+      "tracking": "Seguimiento",
+      "messages": "Mensajes",
+      "billing": "Facturación",
+      "settings": "Configuración",
+      "myCard": "Mi tarjeta",
+      "earnings": "Ingresos",
+      "analytics": "Analítica",
+      "affiliate": "Afiliados",
+      "clients": "Clientes",
+      "budgets": "Presupuestos",
+      "reports": "Informes",
+      "roster": "Lista",
+      "opportunities": "Oportunidades",
+      "review": "Revisión",
+      "support": "Soporte",
+      "attribution": "Atribución",
+      "trackingAdmin": "Diagnóstico de seguimiento",
+      "payouts": "Pagos",
+      "referrals": "Referidos"
+    },
+    "stats": {
+      "brand": {
+        "creatorsActivated": "Creadores activados",
+        "postsPublished": "Publicaciones publicadas",
+        "totalCampaigns": "Total de campañas",
+        "openCollaborations": "Colaboraciones abiertas"
+      },
+      "creator": {
+        "profileCompletion": "Completitud del perfil",
+        "activeCollaborations": "Colaboraciones activas",
+        "pendingRequests": "Solicitudes pendientes",
+        "availableEarnings": "Ingresos disponibles"
+      },
+      "agency": {
+        "clientWorkspaces": "Espacios de trabajo de clientes",
+        "openTasks": "Tareas abiertas",
+        "managedBudget": "Presupuesto gestionado",
+        "reportsReady": "Informes listos"
+      },
+      "admin": {
+        "creatorReviews": "Revisiones de creadores",
+        "brandReviews": "Revisiones de marcas",
+        "openSupportItems": "Casos de soporte abiertos",
+        "auditedChanges": "Cambios auditados"
+      }
+    }
+  },
+  "Brand": {
+    "title": "Resumen de marca",
+    "description": "Gestiona espacios, campañas, creadores, colaboraciones manuales, mensajes, marcadores de facturación y configuración del espacio de trabajo desde un único entorno protegido.",
+    "wallet": {
+      "title": "Saldo de la cartera",
+      "body": "Calculado a partir de las entradas manuales publicadas en el libro mayor."
+    },
+    "actions": {
+      "title": "Acciones pendientes de creadores",
+      "body": "Borradores y publicaciones a la espera del siguiente paso."
+    },
+    "approvals": {
+      "title": "Aprobaciones de marca pendientes",
+      "body": "Trabajo de colaboración listo para tu revisión."
+    },
+    "published": {
+      "title": "Publicaciones publicadas recientemente",
+      "ready": "Los registros de publicaciones publicadas están listos para revisar.",
+      "empty": "Aún no hay publicaciones publicadas. El trabajo aprobado de los creadores aparecerá aquí."
+    },
+    "next": {
+      "title": "Próximos pasos",
+      "topUp": "Añadir fondos a tu cartera",
+      "bookCall": "Reservar una llamada sobre la campaña",
+      "findCreators": "Encontrar creadores"
+    },
+    "spaces": {
+      "title": "Espacios",
+      "body": "Destinos pertenecientes al espacio de trabajo para tus campañas."
+    },
+    "campaigns": {
+      "title": "Campañas",
+      "body": "Crea y realiza el seguimiento de campañas dentro de un espacio."
+    },
+    "marketplace": {
+      "title": "Marketplace de creadores",
+      "body": "Explora creadores verificados por tema, audiencia, país y tarifa fija por publicación."
+    },
+    "empty": {
+      "spaces": {
+        "title": "Espacios",
+        "body": "Crea el primer espacio del entorno de trabajo con nombre, sitio web, descripción, sector, ICP, ubicaciones y URL de CTA predeterminada.",
+        "action": "Siguiente acción: añadir formularios de creación/edición en el Sprint 2 de la Versión 1."
+      },
+      "campaigns": {
+        "title": "Campañas",
+        "body": "Las campañas pertenecen a un espacio y reservan los estados borrador, activa, completada y cancelada para el flujo manual del marketplace."
+      },
+      "marketplace": {
+        "title": "Marketplace de creadores",
+        "body": "Las consultas del marketplace mostrarán perfiles de creadores verificados sin revelar la configuración de sus espacios de trabajo ni las notas de revisión del administrador."
+      },
+      "billing": {
+        "title": "Facturación",
+        "body": "Los paneles de cartera y facturas son marcadores respaldados por registros de movimientos de cartera de solo adición."
+      }
+    }
+  },
+  "BrandSpaces": {
+    "title": "Espacios",
+    "newTitle": "Crear un espacio",
+    "description": "Organiza campañas en torno a un producto, audiencia o destino.",
+    "listTitle": "Tus espacios",
+    "new": "Nuevo espacio"
+  },
+  "BrandCampaigns": {
+    "title": "Campañas",
+    "newTitle": "Crear una campaña",
+    "description": "Planifica campañas dentro de un espacio específico con un estado claro y un presupuesto definido.",
+    "new": "Nueva campaña",
+    "createBrief": "Crear briefing de campaña",
+    "viewBrief": "Ver briefing de campaña",
+    "notFound": "Campaña no encontrada",
+    "notFoundBody": "Esta campaña no existe en tu espacio de trabajo.",
+    "back": "Volver a campañas",
+    "shortlistTitle": "Selección de campaña",
+    "shortlistEmpty": "Aún no se han seleccionado creadores. Añade creadores desde el marketplace para compararlos aquí.",
+    "removeCreator": "Eliminar",
+    "creatorRemoved": "Creador eliminado de la selección.",
+    "shortlistError": "No se pudo actualizar la selección. Inténtalo de nuevo.",
+    "inviteCreator": "Invitar",
+    "creatorInvited": "Invitación enviada."
+  },
+  "BrandBrief": {
+    "title": "Briefing de campaña",
+    "description": "Proporciona a los creadores el contexto, las directrices y las entregas que necesitan para publicar con confianza.",
+    "notFound": "Campaña no encontrada"
+  },
+  "Creator": {
+    "title": "Resumen del creador",
+    "description": "Revisa la completitud del perfil, las solicitudes de colaboración, las notas de los borradores, el envío de publicaciones, los marcadores de ingresos, el enlace de afiliado, los mensajes y la configuración.",
+    "dashboard": {
+      "active": "Colaboraciones activas",
+      "requests": "Solicitudes pendientes",
+      "messages": "Mensajes recientes"
+    },
+    "empty": {
+      "card": {
+        "title": "Mi tarjeta",
+        "body": "Los campos del perfil del creador están aislados detrás del espacio de trabajo del creador y posteriormente podrán publicarse mediante un estado explícito de tarjeta pública."
+      },
+      "collaborations": {
+        "title": "Solicitudes de colaboración",
+        "body": "Los creadores solo pueden ver las colaboraciones en las que está asociado su perfil; los datos de los clientes de la marca permanecen ocultos salvo que un sprint posterior los comparta explícitamente."
+      },
+      "earnings": {
+        "title": "Ingresos",
+        "body": "Los estados de ingresos manuales se modelan por separado de los movimientos de cartera para que la automatización de pagos pueda incorporarse más adelante."
+      },
+      "settings": {
+        "title": "Configuración",
+        "body": "Los datos de pago y la eliminación de la cuenta se representan como superficies de configuración protegidas, mientras que las acciones destructivas se posponen hasta implementar completamente la autenticación."
+      }
+    }
+  },
+  "Marketplace": {
+    "title": "Marketplace de creadores",
+    "description": "Encuentra creadores de LinkedIn verificados por tema, ubicación, audiencia y tarifa fija por publicación.",
+    "searchPlaceholder": "Buscar creadores",
+    "allTopics": "Todos los temas",
+    "countryPlaceholder": "País",
+    "filter": "Filtrar",
+    "verified": "Verificado",
+    "followers": "seguidores",
+    "perPost": "por publicación",
+    "viewProfile": "Ver perfil",
+    "empty": "Ningún creador coincide con estos filtros.",
+    "notFound": "Creador no encontrado",
+    "notFoundBody": "Este creador no está disponible o no ha publicado una tarjeta.",
+    "back": "Volver a creadores",
+    "linkedin": "LinkedIn",
+    "topicsLabel": "Temas",
+    "audience": "Audiencia",
+    "rate": "Tarifa",
+    "addToShortlist": "Añadir a la selección de campaña",
+    "shortlistAdded": "Creador añadido a la selección.",
+    "shortlistError": "No se pudo actualizar la selección. Inténtalo de nuevo."
+  },
+  "CreatorCard": {
+    "title": "Mi tarjeta",
+    "description": "Edita tu perfil de creador y previsualiza la tarjeta pública.",
+    "missing": "Perfil no iniciado",
+    "preview": "Vista previa pública",
+    "previewBody": "Solo los campos publicados de la tarjeta son visibles para las marcas y los visitantes públicos.",
+    "openPublic": "Abrir tarjeta pública",
+    "edit": "Editar perfil",
+    "editTitle": "Configuración del perfil",
+    "editDescription": "Mantén actualizados los datos de tu marketplace y listos para revisión.",
+    "linkedinUrl": "URL de LinkedIn",
+    "headline": "Titular",
+    "country": "País",
+    "followerCount": "Número de seguidores",
+    "price": "Precio por publicación (USD)",
+    "bio": "Biografía",
+    "topics": "Temas (separados por comas)",
+    "save": "Guardar perfil",
+    "saving": "Guardando…",
+    "saved": "Perfil guardado.",
+    "error": "No se pudo guardar el perfil.",
+    "followers": "seguidores",
+    "perPost": "por publicación"
+  },
+  "PublicCard": {
+    "eyebrow": "Tarjeta del creador",
+    "topics": "Temas:",
+    "audience": "Audiencia:",
+    "rate": "Tarifa:",
+    "followers": "seguidores",
+    "perPost": "por publicación",
+    "linkedin": "Ver perfil de LinkedIn"
+  },
+  "Agency": {
+    "title": "Espacio de trabajo de agencia",
+    "description": "Las rutas de agencia están reservadas actualmente en la estructura de la aplicación, mientras que los flujos de espacios de clientes y listas de creadores quedan intencionadamente fuera del alcance hasta la Versión 4.",
+    "empty": {
+      "title": "Las funciones de agencia están reservadas",
+      "body": "El modelo de datos y la navegación pueden reconocer tipos de espacios de trabajo de agencia, pero el Sprint 1 no expone datos entre clientes, importaciones de listas ni informes de agencia.",
+      "action": "Versión futura: la Versión 4 introduce registros de flujos de agencia."
+    }
+  },
+  "Admin": {
+    "title": "Resumen de administración",
+    "description": "Los usuarios de operaciones pueden revisar las colas de creadores, marcas, campañas, colaboraciones y soporte con cambios de estado auditables.",
+    "reviewEmpty": {
+      "title": "Cola de revisión",
+      "body": "Los elementos de revisión de administración registran el tipo de asunto, ID del asunto, estado de revisión, responsable, notas, marcas de tiempo y propiedad opcional del espacio de trabajo.",
+      "action": "Abrir /admin/review con una identidad de demostración de administrador."
+    },
+    "sensitiveEmpty": {
+      "title": "Actualizaciones sensibles",
+      "body": "Los cambios de estado deben validar las transiciones en el servidor y generar registros de auditoría cuando las rutas de mutación actualicen registros protegidos."
+    }
+  },
+  "AdminReview": {
+    "title": "Cola de revisión",
+    "description": "Los registros revisables utilizan los estados nuevo, en revisión, aprobado, rechazado, necesita cambios y archivado.",
+    "headers": {
+      "subject": "Asunto",
+      "record": "Registro",
+      "status": "Estado",
+      "nextAction": "Siguiente acción"
+    },
+    "rows": {
+      "creator": {
+        "subject": "perfil_de_creador",
+        "record": "Perfil de Arjun Mehta",
+        "status": "en_revisión",
+        "action": "Verificar audiencia y URL de LinkedIn"
+      },
+      "brand": {
+        "subject": "marca",
+        "record": "Acme GTM",
+        "status": "nuevo",
+        "action": "Confirmar sitio web de la empresa e ICP"
+      },
+      "campaign": {
+        "subject": "campaña",
+        "record": "Lanzamiento de herramientas para desarrolladores",
+        "status": "necesita_cambios",
+        "action": "Se requiere presupuesto y URL de CTA"
+      },
+      "creatorProfile": {
+        "subject": "perfil_de_creador",
+        "record": "Perfil de Arjun Mehta",
+        "status": "en_revisión",
+        "action": "Verificar audiencia y URL de LinkedIn"
+      },
+      "brandCampaign": {
+        "subject": "campaña_de_marca",
+        "record": "Lanzamiento de herramientas para desarrolladores",
+        "status": "nuevo",
+        "action": "Revisar briefing y presupuesto"
+      },
+      "dispute": {
+        "subject": "disputa",
+        "record": "Colaboración de Acme GTM",
+        "status": "en_revisión",
+        "action": "Revisar las notas de ambas partes"
+      },
+      "cancellation": {
+        "subject": "cancelación",
+        "record": "Lanzamiento de primavera",
+        "status": "nuevo",
+        "action": "Confirmar resultado de la cancelación"
+      },
+      "withdrawal": {
+        "subject": "retiro",
+        "record": "Arjun Mehta · $500.00",
+        "status": "nuevo",
+        "action": "Revisar y procesar manualmente"
+      },
+      "manualPayment": {
+        "subject": "pago_manual",
+        "record": "INV-1001 · $2,500.00",
+        "status": "en_revisión",
+        "action": "Confirmar estado del libro mayor y de la factura"
+      }
+    },
+    "empty": {
+      "title": "Cola vacía",
+      "body": "Cuando no haya registros que revisar, esta ruta debe mostrar un estado vacío claro en lugar de una tabla vacía."
+    }
+  },
+  "AdminSupport": {
+    "title": "Cola de soporte",
+    "description": "El soporte está reservado como ruta del panel de administración para que futuras disputas de campañas y flujos de cancelación tengan un destino protegido.",
+    "empty": {
+      "title": "No hay casos de soporte",
+      "body": "Los registros de soporte no se introducen en el Sprint 1. Esta estructura confirma el enrutamiento, la navegación y los permisos para el futuro módulo."
+    },
+    "queues": {
+      "disputes": {
+        "title": "Disputas",
+        "count": "1",
+        "body": "Problemas de colaboración pendientes de una decisión de Operaciones."
+      },
+      "cancellations": {
+        "title": "Cancelaciones",
+        "count": "1",
+        "body": "Solicitudes de cancelación pendientes de confirmación."
+      },
+      "withdrawals": {
+        "title": "Retiros",
+        "count": "1",
+        "body": "Solicitudes de pago de creadores pendientes de procesamiento manual."
+      }
+    }
+  },
+  "Public": {
+    "nav": {
+      "label": "Navegación pública",
+      "menu": "Abrir navegación",
+      "creators": "Creadores",
+      "pricing": "Precios",
+      "about": "Acerca de",
+      "help": "Ayuda"
+    },
+    "footer": {
+      "blurb": "El marketplace de creadores de LinkedIn B2B para campañas enfocadas y una distribución creíble.",
+      "product": "Producto",
+      "company": "Empresa",
+      "reports": "Informes",
+      "resources": "Recursos",
+      "pricingMarkdown": "Precios en Markdown",
+      "llms": "LLMs.txt",
+      "contact": "Contacto",
+      "privacy": "Privacidad",
+      "terms": "Términos"
+    },
+    "home": {
+      "eyebrow": "Marketplace de creadores de LinkedIn B2B",
+      "headline": "Convierte voces de confianza en tu próximo canal de crecimiento.",
+      "intro": "Paano ayuda a los equipos B2B a descubrir creadores de LinkedIn seleccionados, preparar campañas y gestionar colaboraciones desde un único espacio de trabajo enfocado.",
+      "primaryCta": "Iniciar una campaña",
+      "secondaryCta": "Explorar creadores",
+      "proofTitle": "Un marketplace práctico para los equipos B2B modernos",
+      "proofOne": "Encuentra creadores por audiencia, tema y afinidad.",
+      "proofTwo": "Pasa del briefing a la publicación con una responsabilidad clara.",
+      "proofThree": "Mantén organizados los registros de campañas, creadores y facturación."
+    },
+    "creatorsPage": {
+      "eyebrow": "Para creadores",
+      "title": "Haz que te descubran los equipos que están construyendo el futuro del B2B.",
+      "intro": "Crea una tarjeta de creador clara, recibe briefings relevantes y convierte tu experiencia en LinkedIn en colaboraciones recurrentes.",
+      "cta": "Crear tu perfil de creador",
+      "cards": [
+        {
+          "title": "Muestra tu punto de vista",
+          "body": "Ofrece a las marcas una visión concisa de tu audiencia, tus temas y tu voz."
+        },
+        {
+          "title": "Trabaja con mejores briefings",
+          "body": "Mantén las entregas, las notas de los borradores y los detalles de publicación en un solo lugar."
+        },
+        {
+          "title": "Crece con confianza",
+          "body": "Construye un historial de colaboraciones cuidadas y trabajos publicados."
+        }
+      ]
+    },
+    "pricingPage": {
+      "eyebrow": "Precios",
+      "title": "Empieza de forma enfocada. Escala cuando el proceso funcione.",
+      "intro": "Elige un camino sencillo para tu primera campaña con creadores. Habla con nosotros cuando necesites soporte gestionado.",
+      "selfTitle": "Autogestionado",
+      "selfBody": "Para equipos preparados para descubrir creadores y ejecutar campañas directamente.",
+      "selfPrice": "Empieza con lo esencial",
+      "managedTitle": "Campañas gestionadas",
+      "managedBody": "Para equipos que quieren ayuda con estrategia de creadores, búsqueda y operaciones.",
+      "managedPrice": "Habla con nuestro equipo",
+      "cta": "Crear una cuenta"
+    },
+    "about": {
+      "eyebrow": "Acerca de Paano",
+      "title": "La distribución B2B funciona mejor cuando la experiencia sigue siendo humana.",
+      "intro": "Paano está creando la capa operativa entre empresas ambiciosas y los creadores en quienes sus audiencias ya confían."
+    },
+    "help": {
+      "eyebrow": "Centro de ayuda",
+      "title": "¿Tienes preguntas antes de tu primera campaña?",
+      "intro": "Empieza por lo básico y ponte en contacto con nosotros cuando tu flujo de trabajo necesite una revisión más detallada.",
+      "contact": "Contactar con soporte",
+      "questions": [
+        {
+          "q": "¿Para quién es Paano?",
+          "a": "Empresas B2B, agencias y creadores de LinkedIn que quieren un flujo de colaboración enfocado."
+        },
+        {
+          "q": "¿Las campañas están automatizadas?",
+          "a": "La primera versión mantiene la revisión, los briefings y las operaciones de colaboración deliberadamente dirigidos por personas."
+        },
+        {
+          "q": "¿Cómo puedo unirme?",
+          "a": "Crea una cuenta, elige tu rol y completa el breve proceso de incorporación."
+        }
+      ]
+    },
+    "generic": {
+      "eyebrow": "Recursos de Paano",
+      "title": "Un punto de partida claro para tu próxima campaña.",
+      "intro": "Este recurso público se está preparando. Mientras tanto, explora creadores o inicia tu espacio de trabajo.",
+      "cta": "Explorar creadores"
+    },
+    "Collaborations": {
+      "brandTitle": "Colaboraciones",
+      "brandDescription": "Invita a creadores, realiza el seguimiento de las entregas y gestiona el trabajo de las campañas.",
+      "creatorTitle": "Solicitudes de colaboración",
+      "creatorDescription": "Revisa las solicitudes y mantén el contexto de la campaña en un solo lugar.",
+      "detailTitle": "Detalles de la colaboración",
+      "detailDescription": "Revisa la responsabilidad, el estado, el precio, la fecha límite y la siguiente acción.",
+      "price": "Precio",
+      "due": "Fecha límite",
+      "notes": "Notas de entrega",
+      "emptyTitle": "Aún no hay colaboraciones",
+      "emptyBody": "Las nuevas invitaciones y el trabajo de campañas aparecerán aquí.",
+      "status": {
+        "invited": "Invitado",
+        "accepted": "Aceptado",
+        "declined": "Rechazado",
+        "draft": "Borrador",
+        "published": "Publicado",
+        "completed": "Completado",
+        "cancelled": "Cancelado"
+      }
+    },
+    "Messages": {
+      "title": "Mensajes",
+      "description": "Mantén las conversaciones de las campañas conectadas con la colaboración.",
+      "threadTitle": "Lanzamiento de herramientas para desarrolladores",
+      "replyTitle": "Responder de forma segura",
+      "replyBody": "Los mensajes están protegidos por el acceso al espacio de trabajo y se almacenan asociados a este hilo de campaña."
+    },
+    "legal": {
+      "privacyEyebrow": "Privacidad",
+      "privacyTitle": "La privacidad forma parte del producto.",
+      "termsEyebrow": "Términos",
+      "termsTitle": "Términos claros para un marketplace claro.",
+      "contactEyebrow": "Contacto",
+      "contactTitle": "Hablemos de tu próxima campaña.",
+      "contactIntro": "Cuéntanos qué estás construyendo y te ayudaremos a encontrar el punto de partida adecuado."
+    }
+  },
+  "Collaborations": {
+    "brandTitle": "Colaboraciones",
+    "brandDescription": "Invita a creadores, realiza el seguimiento de las entregas y gestiona el trabajo de las campañas.",
+    "creatorTitle": "Solicitudes de colaboración",
+    "creatorDescription": "Revisa las solicitudes y mantén el contexto de la campaña en un solo lugar.",
+    "detailTitle": "Detalles de la colaboración",
+    "detailDescription": "Revisa la responsabilidad, el estado, el precio, la fecha límite y la siguiente acción.",
+    "price": "Precio",
+    "due": "Fecha límite",
+    "notes": "Notas de entrega",
+    "emptyTitle": "Aún no hay colaboraciones",
+    "emptyBody": "Las nuevas invitaciones y el trabajo de campañas aparecerán aquí.",
+    "submitDraft": "Enviar borrador",
+    "draftPlaceholder": "Pega el texto o las notas de tu borrador…",
+    "reviewNotes": "Comentarios de revisión",
+    "approve": "Aprobar borrador",
+    "requestChanges": "Solicitar cambios",
+    "publishedUrl": "URL de LinkedIn publicada",
+    "submitPublished": "Enviar URL publicada",
+    "timeline": "Cronología de actividad",
+    "noActivity": "Aún no hay actividad registrada.",
+    "saved": "Actualización guardada.",
+    "error": "No se pudo actualizar esta colaboración.",
+    "status": {
+      "invited": "Invitado",
+      "accepted": "Aceptado",
+      "declined": "Rechazado",
+      "draft": "Borrador",
+      "revision_requested": "Cambios solicitados",
+      "approved": "Aprobado",
+      "published": "Publicado",
+      "completed": "Completado",
+      "cancelled": "Cancelado"
+    }
+  },
+  "Messages": {
+    "title": "Mensajes",
+    "description": "Mantén las conversaciones de las campañas conectadas con la colaboración.",
+    "threadTitle": "Lanzamiento de herramientas para desarrolladores",
+    "replyTitle": "Responder de forma segura",
+    "replyBody": "Los mensajes están protegidos por el acceso al espacio de trabajo y se almacenan asociados a este hilo de campaña."
+  },
+  "Results": {
+    "brandTitle": "Resultados de campaña",
+    "brandDescription": "Introduce y revisa métricas de rendimiento manuales para las publicaciones de creadores.",
+    "allCampaigns": "Todas las campañas",
+    "creatorPlaceholder": "ID del creador",
+    "filter": "Filtrar resultados",
+    "exportCsv": "Exportar CSV",
+    "conversionRate": "Tasa de conversión",
+    "allEvents": "Todos los tipos de eventos",
+    "eventTypes": {
+      "lead": "Lead",
+      "signup": "Registro / prueba",
+      "purchase": "Compra"
+    },
+    "tableTitle": "Rendimiento de publicaciones",
+    "emptyTitle": "Aún no hay resultados",
+    "emptyBody": "Las publicaciones verificadas con métricas manuales aparecerán aquí.",
+    "funnelTitle": "Embudo de conversión",
+    "funnelDescription": "Los eventos propios se relacionan con el último clic válido que no sea de un bot cuando hay un token de seguimiento presente.",
+    "funnel": {
+      "clicks": "Clics",
+      "leads": "Leads",
+      "signups": "Registros / pruebas",
+      "purchases": "Compras",
+      "attributed": "Atribuidos"
+    },
+    "metrics": {
+      "impressions": "Impresiones",
+      "clicks": "Clics",
+      "leads": "Leads",
+      "signups": "Registros",
+      "revenue": "Ingresos / pipeline"
+    }
+  },
+  "Attribution": {
+    "title": "Inspector de atribución",
+    "description": "Revisa las decisiones deterministas de último clic, la confianza y las conversiones sin coincidencia.",
+    "emptyTitle": "Aún no hay decisiones de atribución",
+    "emptyBody": "Las conversiones aparecerán después de recibir un evento de píxel que no esté en modo de depuración.",
+    "unmatched": "Campaña sin coincidencia",
+    "unknownCreator": "Creador desconocido"
+  },
+  "AdminTracking": {
+    "title": "Diagnóstico de seguimiento",
+    "description": "Inspecciona enlaces, eventos de píxel, decisiones de atribución y el flujo de QA de extremo a extremo.",
+    "links": "Enlaces de seguimiento",
+    "events": "Eventos de píxel",
+    "attributions": "Registros de atribución",
+    "clicks": "clics",
+    "none": "Aún no hay registros.",
+    "qaTitle": "Lista de regresión de V3",
+    "qaBody": "Prueba un clic en un enlace de seguimiento, registro, compra, evento duplicado, clave faltante, clave regenerada y enlace deshabilitado. Confirma los límites de marca, creador y administrador para cada resultado.",
+    "qaAction": "Consulta docs/qa/version-3-tracking.md"
+  },
+  "Tracking": {
+    "title": "Enlaces de seguimiento",
+    "description": "Inspecciona enlaces propios, destinos, contexto de campaña y clics registrados.",
+    "clicks": "Clics",
+    "campaign": "Campaña",
+    "creator": "Creador",
+    "open": "Abrir redirección",
+    "emptyTitle": "Aún no hay enlaces de seguimiento",
+    "emptyBody": "Crea un enlace desde una colaboración publicada para empezar a registrar clics.",
+    "status": {
+      "active": "Activo",
+      "disabled": "Deshabilitado",
+      "expired": "Caducado",
+      "invalid": "No válido"
+    }
+  },
+  "Pixel": {
+    "title": "Configuración del píxel",
+    "description": "Instala Paano en cada espacio de marca para recibir visitas de página y eventos de conversión propios.",
+    "installOn": "Instálalo en {website}. El script puede añadirse al encabezado de tu sitio o al gestor de etiquetas.",
+    "copy": "Copiar fragmento",
+    "copied": "Fragmento copiado",
+    "regenerate": "Regenerar clave",
+    "saved": "Nueva clave creada.",
+    "warning": "Regenerar detiene inmediatamente la clave anterior. ¿Continuar?",
+    "emptyTitle": "Crea primero un espacio",
+    "emptyBody": "La configuración del píxel estará disponible después de que tu marca tenga un espacio.",
+    "debugTitle": "Eventos de depuración",
+    "debugBody": "Prueba con ?paano_debug=1 para ver eventos recientes sin mezclarlos con los informes de producción.",
+    "debugEmpty": "Aún no se han recibido eventos de depuración.",
+    "docsEyebrow": "Documentación del píxel",
+    "docsTitle": "Qué se puede rastrear",
+    "docsIntro": "El script instalado envía estos eventos propios a Paano. Las visitas de página se rastrean automáticamente después de cargar el script; los eventos de conversión se envían cuando tu sitio llama a la función global paano.",
+    "implementationTitle": "Cómo funciona el seguimiento",
+    "implementationBody": "Pega el fragmento en el encabezado de tu sitio o en el gestor de etiquetas. Después, llama a paano('track', event, properties) tras la acción correspondiente. Las propiedades del evento pueden incluir un ID de pedido, valor o correo electrónico; el correo se normaliza y se aplica un hash para la vinculación de identidades.",
+    "debugHelp": "Para realizar pruebas sin afectar los informes de producción, añade ?paano_debug=1 a la URL de la página. Los eventos de depuración aparecen arriba en la lista de depuración reciente.",
+    "events": {
+      "pageview": {
+        "title": "Visita de página",
+        "body": "Se registra automáticamente cuando el script de Paano se carga en una página."
+      },
+      "lead": {
+        "title": "Lead",
+        "body": "Registra un formulario de lead completado u otra acción de contacto cualificada."
+      },
+      "signup": {
+        "title": "Registro",
+        "body": "Registra la creación de una cuenta y, opcionalmente, proporciona el correo electrónico del visitante."
+      },
+      "trial_started": {
+        "title": "Prueba iniciada",
+        "body": "Registra cuándo un visitante comienza una prueba del producto."
+      },
+      "purchase": {
+        "title": "Compra",
+        "body": "Registra una compra completada con valor, moneda e ID de pedido cuando estén disponibles."
+      },
+      "custom": {
+        "title": "Conversión personalizada",
+        "body": "Usa un evento personalizado cuando la conversión no encaje con los eventos estándar."
+      }
+    }
+  },
+  "Analytics": {
+    "title": "Analítica de creadores",
+    "description": "Revisa los clics a nivel de publicación y las conversiones agregadas de tus colaboraciones publicadas.",
+    "privacyNotice": "Los ingresos de la marca, los valores del pipeline, la identidad de los compradores y las cargas útiles de eventos sin procesar son privados y no se muestran aquí.",
+    "pendingMetrics": "Algunas métricas pueden retrasarse mientras se procesan los eventos registrados.",
+    "emptyTitle": "Aún no hay analítica",
+    "emptyBody": "Los resúmenes de rendimiento aparecerán después de que una marca registre métricas para una de tus publicaciones publicadas.",
+    "metrics": {
+      "impressions": "Impresiones",
+      "clicks": "Clics",
+      "leads": "Leads",
+      "signups": "Registros",
+      "revenue": "Ingresos / pipeline"
+    }
+  }
+}

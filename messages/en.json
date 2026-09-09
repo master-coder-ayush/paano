@@ -1,4 +1,5 @@
 {
+  "Language": { "label": "Language", "en": "English", "es": "Español", "fr": "Français" },
   "Common": {
     "brand": "Paano",
     "publicSite": "Public site",
@@ -13,6 +14,7 @@
     "signOut": "Sign out",
     "backToLogin": "Back to login",
     "workspace": "workspace",
+    "language": { "label": "Language", "en": "English", "es": "Español", "fr": "Français" },
     "workspaceTypes": {
       "brand": "brand",
       "creator": "creator",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type React from "react";
 import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import {
   AlertTriangle,
   Bell,
@@ -154,6 +155,7 @@ export function WorkspaceShell({
               />
             ))}
           </nav>
+          <LanguageSwitcher />
           <form action="/api/auth/logout" className="mt-6" method="post">
             <button
               className="flex h-10 w-full items-center gap-3 overflow-hidden px-2 text-sm text-primary/75 transition hover:bg-accent/35 hover:text-primary"
