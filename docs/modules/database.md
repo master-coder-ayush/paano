@@ -1,5 +1,9 @@
 # Database Module
 
+## Version 2 Sprint 4
+
+Migration `drizzle/0006_loud_cannonball.sql` adds workspace-scoped `content_drafts` and `collaboration_activity` tables for versioned submissions and actor-attributed workflow history.
+
 ## Version 1 Sprint 1
 
 ### Migration Purpose

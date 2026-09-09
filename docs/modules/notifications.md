@@ -1,5 +1,9 @@
 # Notifications Module
 
+## Version 2 Sprint 4
+
+Workflow events include invitations, accept/decline, draft submission, requested changes, approval, publication, and completion. Notification records remain recipient/workspace scoped with typed entity references and protected deep links.
+
 ## Version 1 Sprint 2
 
 ### Routes

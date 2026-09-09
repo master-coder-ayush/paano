@@ -512,6 +512,65 @@ export const collaborations = mysqlTable(
   }),
 );
 
+export const contentDrafts = mysqlTable(
+  "content_drafts",
+  {
+    id: id(),
+    collaborationId: varchar("collaboration_id", { length: 36 })
+      .notNull()
+      .references(() => collaborations.id),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    authorUserId: varchar("author_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    body: text("body").notNull(),
+    version: int("version").notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    reviewNotes: text("review_notes"),
+    submittedAt: timestamp("submitted_at"),
+    ...timestamps,
+  },
+  (table) => ({
+    collaborationVersionIdx: uniqueIndex(
+      "content_drafts_collaboration_version_idx",
+    ).on(table.collaborationId, table.version),
+    workspaceStatusIdx: index("content_drafts_workspace_status_idx").on(
+      table.workspaceId,
+      table.status,
+    ),
+  }),
+);
+
+export const collaborationActivity = mysqlTable(
+  "collaboration_activity",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    collaborationId: varchar("collaboration_id", { length: 36 })
+      .notNull()
+      .references(() => collaborations.id),
+    actorUserId: varchar("actor_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    action: varchar("action", { length: 80 }).notNull(),
+    note: text("note"),
+    ...timestamps,
+  },
+  (table) => ({
+    collaborationIdx: index("collaboration_activity_collaboration_idx").on(
+      table.collaborationId,
+      table.createdAt,
+    ),
+    workspaceIdx: index("collaboration_activity_workspace_idx").on(
+      table.workspaceId,
+    ),
+  }),
+);
+
 export const messageThreads = mysqlTable(
   "message_threads",
   {

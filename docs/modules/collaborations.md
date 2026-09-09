@@ -1,5 +1,9 @@
 # Collaborations
 
+## Version 2 Sprint 4
+
+The workflow supports invited, accepted, draft, revision_requested, approved, published, completed, declined, and cancelled states. Brand review and creator publishing mutations require bearer authentication plus server-side ownership of the attached workspace. Every transition records actor, action, note, and timestamp in collaboration activity.
+
 Sprint 6 adds brand-owned collaborations and creator-scoped requests. Records carry `workspace_id`, campaign, creator, brand, price, currency, due date, and lifecycle status. Brand routes require a bearer token resolving to an active brand workspace; creator routes require the attached creator workspace. Server transitions are restricted to valid lifecycle edges and duplicate active invitations are rejected. Message threads are linked by collaboration entity context.
 # Sprint 3
 

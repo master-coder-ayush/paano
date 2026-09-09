@@ -43,6 +43,13 @@
       "when": 1788927270354,
       "tag": "0005_clammy_prodigy",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1788928082011,
+      "tag": "0006_loud_cannonball",
+      "breakpoints": true
     }
   ]
 }

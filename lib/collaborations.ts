@@ -7,6 +7,8 @@ export const collaborationStatuses = [
   "accepted",
   "declined",
   "draft",
+  "revision_requested",
+  "approved",
   "published",
   "completed",
   "cancelled",
@@ -27,6 +29,30 @@ export type Collaboration = {
   completedAt?: string;
   notes: string;
   publishedPostUrl?: string;
+  reviewNotes?: string;
+};
+export type ContentDraft = {
+  id: string;
+  collaborationId: string;
+  authorUserId: string;
+  body: string;
+  version: number;
+  status:
+    | "draft"
+    | "submitted"
+    | "changes_requested"
+    | "approved"
+    | "superseded";
+  reviewNotes?: string;
+  submittedAt?: string;
+};
+export type CollaborationActivity = {
+  id: string;
+  collaborationId: string;
+  actorUserId: string;
+  action: string;
+  note?: string;
+  createdAt: string;
 };
 export type Message = {
   id: string;
@@ -66,6 +92,16 @@ const invitationNotifications: Array<{
   collaborationId: string;
   type: string;
 }> = [];
+const drafts: ContentDraft[] = [];
+const activities: CollaborationActivity[] = [
+  {
+    id: "activity_invited",
+    collaborationId: "collab_launch_arjun",
+    actorUserId: "user_brand_demo",
+    action: "invited",
+    createdAt: "2026-09-08T09:00:00.000Z",
+  },
+];
 
 export function listCollaborations(
   workspaceId: string,
@@ -138,15 +174,77 @@ export function listInvitationNotifications(recipientUserId: string) {
     (item) => item.recipientUserId === recipientUserId,
   );
 }
+export function listDrafts(collaborationId: string) {
+  return drafts
+    .filter((d) => d.collaborationId === collaborationId)
+    .sort((a, b) => b.version - a.version);
+}
+export function listActivity(collaborationId: string) {
+  return activities
+    .filter((a) => a.collaborationId === collaborationId)
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+}
+export function submitDraft(
+  collaborationId: string,
+  authorUserId: string,
+  body: string,
+) {
+  const item = getCollaboration(collaborationId);
+  if (
+    !item ||
+    !body.trim() ||
+    !["accepted", "draft", "revision_requested"].includes(item.status)
+  )
+    return { error: "invalid_state" as const };
+  drafts
+    .filter(
+      (d) => d.collaborationId === collaborationId && d.status === "submitted",
+    )
+    .forEach((d) => {
+      d.status = "superseded";
+    });
+  const draft = {
+    id: randomUUID(),
+    collaborationId,
+    authorUserId,
+    body: body.trim(),
+    version: listDrafts(collaborationId).length + 1,
+    status: "submitted" as const,
+    submittedAt: new Date().toISOString(),
+  };
+  drafts.push(draft);
+  item.status = "draft";
+  recordActivity(item, authorUserId, "draft_submitted");
+  return { draft };
+}
+function recordActivity(
+  item: Collaboration,
+  actorUserId: string,
+  action: string,
+  note?: string,
+) {
+  activities.push({
+    id: randomUUID(),
+    collaborationId: item.id,
+    actorUserId,
+    action,
+    note,
+    createdAt: new Date().toISOString(),
+  });
+}
 export function transitionCollaboration(
   item: Collaboration,
   next: CollaborationStatus,
+  actorUserId = "system",
+  note?: string,
 ) {
   const allowed: Record<CollaborationStatus, CollaborationStatus[]> = {
     invited: ["accepted", "declined", "cancelled"],
     accepted: ["draft", "cancelled"],
     declined: [],
-    draft: ["published", "cancelled"],
+    draft: ["revision_requested", "approved", "cancelled"],
+    revision_requested: ["draft", "cancelled"],
+    approved: ["published", "cancelled"],
     published: ["completed"],
     completed: [],
     cancelled: [],
@@ -155,6 +253,8 @@ export function transitionCollaboration(
   item.status = next;
   if (next === "accepted") item.acceptedAt = new Date().toISOString();
   if (next === "completed") item.completedAt = new Date().toISOString();
+  if (note) item.reviewNotes = note;
+  recordActivity(item, actorUserId, next, note);
   return true;
 }
 export function addMessage(
