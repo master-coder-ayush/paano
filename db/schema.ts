@@ -422,6 +422,10 @@ export const pixelEvents = mysqlTable(
     payload: json("payload").$type<Record<string, unknown>>(),
     identityHash: varchar("identity_hash", { length: 128 }),
     receivedAt: timestamp("received_at").defaultNow().notNull(),
+    processedAt: timestamp("processed_at"),
+    source: varchar("source", { length: 30 }).notNull().default("pixel"),
+    consentMode: varchar("consent_mode", { length: 30 }).notNull().default("granted"),
+    piiSuppressed: int("pii_suppressed").notNull().default(0),
     status: varchar("status", { length: 20 })
       .$type<(typeof pixelEventStatuses)[number]>()
       .notNull(),

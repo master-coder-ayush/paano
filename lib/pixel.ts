@@ -20,7 +20,17 @@ export type PixelEvent = {
   payload: Record<string, unknown>;
   receivedAt: string;
   status: "received" | "processed" | "duplicate" | "failed" | "ignored";
+  consentMode: "granted" | "denied" | "unknown";
+  debug: boolean;
 };
+export const pixelEventTypes = [
+  "pageview",
+  "lead",
+  "signup",
+  "trial_started",
+  "purchase",
+  "custom",
+] as const;
 const keys: PixelKey[] = [
   {
     id: "pixel_key_demo",
@@ -85,6 +95,27 @@ export function receivePixelEvent(
   const space = getSpace(key.workspaceId, key.spaceId);
   if (!space || space.status !== "active")
     return { error: "invalid_space" as const };
+  const normalizedType = eventType.trim().toLowerCase();
+  if (
+    !pixelEventTypes.includes(
+      normalizedType as (typeof pixelEventTypes)[number],
+    )
+  )
+    return { error: "unsupported_event" as const };
+  const consentMode =
+    payload.consent === "denied"
+      ? "denied"
+      : payload.consent === "unknown"
+        ? "unknown"
+        : "granted";
+  if (consentMode === "denied")
+    return {
+      event: {
+        id: randomUUID(),
+        status: "ignored" as const,
+        eventType: normalizedType,
+      },
+    };
   const eventId =
     typeof payload.event_id === "string" ? payload.event_id : randomUUID();
   if (
@@ -111,7 +142,7 @@ export function receivePixelEvent(
     workspaceId: key.workspaceId,
     spaceId: key.spaceId,
     siteKeyId: key.id,
-    eventType: eventType.trim(),
+    eventType: normalizedType,
     eventId,
     payload: {
       ...payload,
@@ -119,6 +150,8 @@ export function receivePixelEvent(
     },
     receivedAt: new Date().toISOString(),
     status: debug ? "received" : "processed",
+    consentMode,
+    debug,
   };
   events.push(event);
   return { event, identityHash: identity };

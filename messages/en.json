@@ -758,7 +758,22 @@
     "installOn": "Install on {website}. The script can be added to your site head or tag manager.",
     "copy": "Copy snippet", "copied": "Snippet copied", "regenerate": "Regenerate key", "saved": "New key created.",
     "warning": "Regenerating stops the previous key immediately. Continue?",
-    "emptyTitle": "Create a space first", "emptyBody": "Pixel setup becomes available after your brand has a space."
+    "emptyTitle": "Create a space first", "emptyBody": "Pixel setup becomes available after your brand has a space.",
+    "debugTitle": "Debug events", "debugBody": "Test with ?paano_debug=1 to see recent events without mixing them into production reporting.", "debugEmpty": "No debug events received yet.",
+    "docsEyebrow": "Pixel documentation",
+    "docsTitle": "What can be tracked",
+    "docsIntro": "The installed script sends these first-party events to Paano. Pageviews are tracked automatically after the script loads; conversion events are sent when your site calls the global paano function.",
+    "implementationTitle": "How tracking works",
+    "implementationBody": "Paste the snippet in your website head or tag manager. Then call paano('track', event, properties) after the relevant action. Event properties may include an order ID, value, or email; email is normalized and hashed for identity stitching.",
+    "debugHelp": "To test without affecting production reporting, add ?paano_debug=1 to the page URL. Debug events appear above in the recent debug list.",
+    "events": {
+      "pageview": { "title": "Pageview", "body": "Tracked automatically when the Paano script loads on a page." },
+      "lead": { "title": "Lead", "body": "Track a completed lead form or other qualified contact action." },
+      "signup": { "title": "Signup", "body": "Track account creation and optionally provide the visitor email." },
+      "trial_started": { "title": "Trial started", "body": "Track when a visitor begins a product trial." },
+      "purchase": { "title": "Purchase", "body": "Track a completed purchase with value, currency, and order ID when available." },
+      "custom": { "title": "Custom conversion", "body": "Use a custom event when the conversion does not fit the standard events." }
+    }
   },
   "Analytics": {
     "title": "Creator analytics",

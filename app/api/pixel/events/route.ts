@@ -16,10 +16,14 @@ export async function POST(request: NextRequest) {
     body?.debug === true,
   );
   if (result.error)
-    return NextResponse.json({ error: result.error }, { status: 422 });
+    return NextResponse.json(
+      { error: result.error },
+      { status: result.error === "invalid_key" ? 422 : 400 },
+    );
   return NextResponse.json({
     ok: true,
     eventId: result.event.id,
     status: result.event.status,
+    debug: body?.debug === true,
   });
 }
