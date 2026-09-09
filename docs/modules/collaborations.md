@@ -1,5 +1,7 @@
 # Collaborations
 
+Version 3 creates at most one active tracking link per collaboration; the public redirect does not expose protected workspace data.
+
 ## Version 2 Sprint 4
 
 The workflow supports invited, accepted, draft, revision_requested, approved, published, completed, declined, and cancelled states. Brand review and creator publishing mutations require bearer authentication plus server-side ownership of the attached workspace. Every transition records actor, action, note, and timestamp in collaboration activity.

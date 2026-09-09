@@ -62,6 +62,7 @@ const navIcons = {
   referrals: UsersRound,
   results: FileText,
   analytics: FileText,
+  tracking: Target,
 };
 
 type AuthorizedWorkspace = NonNullable<ReturnType<typeof authorizeWorkspace>["workspace"]>;

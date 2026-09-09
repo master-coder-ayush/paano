@@ -525,9 +525,21 @@
       "body": "Support records are not introduced in Sprint 1. This shell confirms routing, navigation, and permission behavior for the future module."
     },
     "queues": {
-      "disputes": { "title": "Disputes", "count": "1", "body": "Collaboration issues awaiting an Ops decision." },
-      "cancellations": { "title": "Cancellations", "count": "1", "body": "Cancellation requests awaiting confirmation." },
-      "withdrawals": { "title": "Withdrawals", "count": "1", "body": "Creator payout requests awaiting manual processing." }
+      "disputes": {
+        "title": "Disputes",
+        "count": "1",
+        "body": "Collaboration issues awaiting an Ops decision."
+      },
+      "cancellations": {
+        "title": "Cancellations",
+        "count": "1",
+        "body": "Cancellation requests awaiting confirmation."
+      },
+      "withdrawals": {
+        "title": "Withdrawals",
+        "count": "1",
+        "body": "Creator payout requests awaiting manual processing."
+      }
     }
   },
   "Public": {
@@ -721,6 +733,22 @@
       "leads": "Leads",
       "signups": "Signups",
       "revenue": "Revenue / pipeline"
+    }
+  },
+  "Tracking": {
+    "title": "Tracking links",
+    "description": "Inspect first-party links, destinations, campaign context, and recorded clicks.",
+    "clicks": "Clicks",
+    "campaign": "Campaign",
+    "creator": "Creator",
+    "open": "Open redirect",
+    "emptyTitle": "No tracking links yet",
+    "emptyBody": "Create a link from a published collaboration to start recording clicks.",
+    "status": {
+      "active": "Active",
+      "disabled": "Disabled",
+      "expired": "Expired",
+      "invalid": "Invalid"
     }
   },
   "Analytics": {

@@ -130,6 +130,7 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "creators", href: "/brand/creators" },
     { labelKey: "collaborations", href: "/brand/collaborations" },
     { labelKey: "results", href: "/brand/results" },
+    { labelKey: "tracking", href: "/brand/tracking" },
     { labelKey: "messages", href: "/brand/messages" },
     { labelKey: "billing", href: "/brand/billing" },
     { labelKey: "settings", href: "/brand#settings" },

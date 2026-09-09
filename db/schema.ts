@@ -557,6 +557,84 @@ export const publishedPosts = mysqlTable(
   }),
 );
 
+export const trackingLinkStatuses = [
+  "active",
+  "disabled",
+  "expired",
+  "invalid",
+] as const;
+
+export const trackingLinks = mysqlTable(
+  "tracking_links",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    spaceId: varchar("space_id", { length: 36 })
+      .notNull()
+      .references(() => spaces.id),
+    campaignId: varchar("campaign_id", { length: 36 })
+      .notNull()
+      .references(() => campaigns.id),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    collaborationId: varchar("collaboration_id", { length: 36 })
+      .notNull()
+      .references(() => collaborations.id),
+    publishedPostId: varchar("published_post_id", { length: 36 }).references(
+      () => publishedPosts.id,
+    ),
+    destinationUrl: varchar("destination_url", { length: 500 }).notNull(),
+    token: varchar("token", { length: 120 }).notNull(),
+    status: varchar("status", { length: 20 })
+      .$type<(typeof trackingLinkStatuses)[number]>()
+      .notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    tokenIdx: uniqueIndex("tracking_links_token_idx").on(table.token),
+    workspaceIdx: index("tracking_links_workspace_idx").on(table.workspaceId),
+    collaborationIdx: index("tracking_links_collaboration_idx").on(
+      table.collaborationId,
+    ),
+  }),
+);
+
+export const trackingClicks = mysqlTable(
+  "tracking_clicks",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    trackingLinkId: varchar("tracking_link_id", { length: 36 })
+      .notNull()
+      .references(() => trackingLinks.id),
+    clickedAt: timestamp("clicked_at").defaultNow().notNull(),
+    referrer: varchar("referrer", { length: 500 }),
+    utmParams: json("utm_params").$type<Record<string, string>>(),
+    userAgent: varchar("user_agent", { length: 500 }),
+    deviceType: varchar("device_type", { length: 30 }),
+    browser: varchar("browser", { length: 80 }),
+    ipRegion: varchar("ip_region", { length: 80 }),
+    botScore: int("bot_score").notNull().default(0),
+    isBot: int("is_bot").notNull().default(0),
+    ...timestamps,
+  },
+  (table) => ({
+    linkIdx: index("tracking_clicks_link_idx").on(
+      table.trackingLinkId,
+      table.clickedAt,
+    ),
+    workspaceIdx: index("tracking_clicks_workspace_idx").on(
+      table.workspaceId,
+      table.clickedAt,
+    ),
+  }),
+);
+
 export const resultSnapshots = mysqlTable(
   "result_snapshots",
   {
