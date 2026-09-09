@@ -53,3 +53,9 @@ Notification rows include protected deep links back to the related workspace are
 ## Version 2 Sprint 1
 
 Dashboard notification badges continue to use the authenticated demo identity and link to `/notifications`. No new notification type or persistence path is introduced by this sprint.
+
+## Version 2 Sprint 7
+
+The notification center covers the complete manual workflow: invitations, accept/decline, draft submission, approval, revision requests, published URLs, completion, and withdrawal requests. Admin users also receive review and manual payment updates. Notification metadata should include a protected `href` plus the related entity state; notification records remain scoped by recipient and optional workspace.
+
+The page is protected by workspace authorization. The API requires `Authorization: Bearer <token>` and must return only the authenticated recipient's records. Read/archive mutations must validate ownership and write an audit entry when they change sensitive state.

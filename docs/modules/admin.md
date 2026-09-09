@@ -56,3 +56,9 @@ Invalid transitions return `409` and must not partially update related records. 
 - Verify `/admin?as=brand` shows permission denied.
 - Verify `/api/admin/review` rejects missing and brand bearer tokens.
 - Verify valid admin state transitions return `audited: true`.
+
+## Version 2 Sprint 7
+
+The admin review surface represents queues for creator profiles, brand campaigns, disputes, cancellations, withdrawals, and manual invoice/payment records. `/admin/support` summarizes dispute, cancellation, and withdrawal work; `/admin/billing` and `/admin/payouts` remain manual operations views.
+
+All admin pages require an active admin workspace. Review and payment mutations require a valid bearer token, platform-admin authorization, server-side transition validation, and an audit log entry. No brand or creator workspace can read or mutate admin queue data.

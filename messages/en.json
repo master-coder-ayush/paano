@@ -129,6 +129,7 @@
     "emptyTitle": "No notifications",
     "emptyBody": "New onboarding and workspace events will appear here once persisted workflows are connected.",
     "badgeLabel": "{count} unread notifications",
+    "unread": "unread",
     "headers": {
       "type": "Type",
       "status": "Status",
@@ -154,6 +155,44 @@
         "status": "unread",
         "entity": "admin_review_item",
         "action": "Open review queue"
+      },
+      "invitation": {
+        "type": "creator_invitation",
+        "entity": "collaboration"
+      },
+      "draftSubmitted": {
+        "type": "draft_submitted",
+        "entity": "collaboration"
+      },
+      "approval": {
+        "type": "draft_approved",
+        "entity": "collaboration"
+      },
+      "revisionRequest": {
+        "type": "revision_requested",
+        "entity": "collaboration"
+      },
+      "publishedUrl": {
+        "type": "published_url_submitted",
+        "entity": "published_post"
+      },
+      "completion": {
+        "type": "collaboration_completed",
+        "entity": "collaboration"
+      },
+      "withdrawalRequest": {
+        "type": "withdrawal_requested",
+        "entity": "withdrawal_request"
+      },
+      "creatorProfile": {
+        "type": "creator_profile_review",
+        "entity": "creator_profile",
+        "action": "Open creator review queue"
+      },
+      "paymentManual": {
+        "type": "manual_payment_update",
+        "entity": "payment_record",
+        "action": "Open billing operations"
       }
     }
   },
@@ -435,6 +474,42 @@
         "record": "Developer tools launch",
         "status": "needs_changes",
         "action": "Budget and CTA URL required"
+      },
+      "creatorProfile": {
+        "subject": "creator_profile",
+        "record": "Arjun Mehta profile",
+        "status": "in_review",
+        "action": "Verify audience and LinkedIn URL"
+      },
+      "brandCampaign": {
+        "subject": "brand_campaign",
+        "record": "Developer tools launch",
+        "status": "new",
+        "action": "Review brief and budget"
+      },
+      "dispute": {
+        "subject": "dispute",
+        "record": "Acme GTM collaboration",
+        "status": "in_review",
+        "action": "Review both-party notes"
+      },
+      "cancellation": {
+        "subject": "cancellation",
+        "record": "Spring launch",
+        "status": "new",
+        "action": "Confirm cancellation outcome"
+      },
+      "withdrawal": {
+        "subject": "withdrawal",
+        "record": "Arjun Mehta · $500.00",
+        "status": "new",
+        "action": "Review and process manually"
+      },
+      "manualPayment": {
+        "subject": "manual_payment",
+        "record": "INV-1001 · $2,500.00",
+        "status": "in_review",
+        "action": "Confirm ledger and invoice status"
       }
     },
     "empty": {
@@ -448,6 +523,11 @@
     "empty": {
       "title": "No support items",
       "body": "Support records are not introduced in Sprint 1. This shell confirms routing, navigation, and permission behavior for the future module."
+    },
+    "queues": {
+      "disputes": { "title": "Disputes", "count": "1", "body": "Collaboration issues awaiting an Ops decision." },
+      "cancellations": { "title": "Cancellations", "count": "1", "body": "Cancellation requests awaiting confirmation." },
+      "withdrawals": { "title": "Withdrawals", "count": "1", "body": "Creator payout requests awaiting manual processing." }
     }
   },
   "Public": {

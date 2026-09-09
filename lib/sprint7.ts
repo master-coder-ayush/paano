@@ -46,13 +46,71 @@ export const payoutQueue = [
   },
 ];
 export const referralLinks = [
-  { id: "ref-brand-001", type: "brand", token: "arjun-brand", status: "active", referred: "Acme GTM", reward: "$120.00" },
-  { id: "ref-creator-001", type: "creator", token: "arjun-creator", status: "active", referred: "Mira Shah", reward: "$0.00" },
+  {
+    id: "ref-brand-001",
+    type: "brand",
+    token: "arjun-brand",
+    status: "active",
+    referred: "Acme GTM",
+    reward: "$120.00",
+  },
+  {
+    id: "ref-creator-001",
+    type: "creator",
+    token: "arjun-creator",
+    status: "active",
+    referred: "Mira Shah",
+    reward: "$0.00",
+  },
 ];
 export const referralAttributions = [
-  { id: "attr-001", link: "arjun-brand", entity: "Acme GTM", status: "earning", window: "Sep 08 – Dec 08, 2026", amount: "$120.00" },
-  { id: "attr-002", link: "arjun-creator", entity: "Mira Shah", status: "created", window: "Not started", amount: "$0.00" },
+  {
+    id: "attr-001",
+    link: "arjun-brand",
+    entity: "Acme GTM",
+    status: "earning",
+    window: "Sep 08 – Dec 08, 2026",
+    amount: "$120.00",
+  },
+  {
+    id: "attr-002",
+    link: "arjun-creator",
+    entity: "Mira Shah",
+    status: "created",
+    window: "Not started",
+    amount: "$0.00",
+  },
 ];
+
+export const demoNotifications = {
+  brand: [
+    { key: "invitation", href: "/brand/collaborations" },
+    { key: "draftSubmitted", href: "/brand/collaborations" },
+    { key: "publishedUrl", href: "/brand/collaborations" },
+    { key: "completion", href: "/brand/collaborations" },
+  ],
+  creator: [
+    { key: "invitation", href: "/creator/collaborations" },
+    { key: "approval", href: "/creator/collaborations" },
+    { key: "revisionRequest", href: "/creator/collaborations" },
+    { key: "withdrawalRequest", href: "/creator/earnings" },
+  ],
+  agency: [],
+  admin: [
+    { key: "creatorProfile", href: "/admin/review" },
+    { key: "adminReview", href: "/admin/review" },
+    { key: "paymentManual", href: "/admin/billing" },
+  ],
+} as const;
+
+export const adminReviewQueue = [
+  "creatorProfile",
+  "brandCampaign",
+  "dispute",
+  "cancellation",
+  "withdrawal",
+  "manualPayment",
+] as const;
 
 export function bearerAuth(
   request: NextRequest,
