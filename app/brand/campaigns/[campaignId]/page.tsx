@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { WorkspaceGuard, WorkspaceShell } from "@/components/workspace-shell";
 import { userFromDemoKey } from "@/lib/workspace-foundation";
 import { getCampaign, getBrief, listSpaces } from "@/lib/brand-workspace";
+import { listShortlist } from "@/lib/shortlists";
+import { ShortlistPanel } from "@/components/shortlist-panel";
 export default async function CampaignDetail({
   params,
   searchParams,
@@ -56,6 +58,18 @@ export default async function CampaignDetail({
                   {brief ? t("viewBrief") : t("createBrief")}
                 </Link>
               </div>
+              <ShortlistPanel
+                campaignId={c.id}
+                token={activeUser.tokenLabel}
+                initial={listShortlist(workspace.id, c.id)}
+                labels={{
+                  title: t("shortlistTitle"),
+                  empty: t("shortlistEmpty"),
+                  remove: t("removeCreator"),
+                  removed: t("creatorRemoved"),
+                  error: t("shortlistError"),
+                }}
+              />
             </div>
           </WorkspaceShell>
         );

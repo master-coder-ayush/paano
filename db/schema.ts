@@ -441,6 +441,41 @@ export const campaignBriefs = mysqlTable(
   }),
 );
 
+export const shortlistCreators = mysqlTable(
+  "shortlist_creators",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    campaignId: varchar("campaign_id", { length: 36 })
+      .notNull()
+      .references(() => campaigns.id),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    notes: text("notes"),
+    rank: int("rank").notNull().default(0),
+    status: varchar("status", { length: 40 }).notNull(),
+    addedBy: varchar("added_by", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    ...timestamps,
+  },
+  (table) => ({
+    campaignIdx: index("shortlist_creators_campaign_idx").on(
+      table.workspaceId,
+      table.campaignId,
+      table.status,
+    ),
+    creatorIdx: index("shortlist_creators_creator_idx").on(table.creatorId),
+    duplicateIdx: uniqueIndex("shortlist_creators_campaign_creator_idx").on(
+      table.campaignId,
+      table.creatorId,
+    ),
+  }),
+);
+
 export const collaborations = mysqlTable(
   "collaborations",
   {

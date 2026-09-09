@@ -60,6 +60,12 @@ const messages: Message[] = [
     createdAt: "2026-09-08T10:00:00.000Z",
   },
 ];
+const invitationNotifications: Array<{
+  id: string;
+  recipientUserId: string;
+  collaborationId: string;
+  type: string;
+}> = [];
 
 export function listCollaborations(
   workspaceId: string,
@@ -116,7 +122,21 @@ export function createCollaboration(input: {
     notes: input.notes,
   };
   collaborations.push(item);
+  invitationNotifications.push({
+    id: randomUUID(),
+    recipientUserId:
+      input.creator.workspaceId === "workspace_creator_demo"
+        ? "user_creator_demo"
+        : input.creator.workspaceId,
+    collaborationId: item.id,
+    type: "collaboration_invited",
+  });
   return { item };
+}
+export function listInvitationNotifications(recipientUserId: string) {
+  return invitationNotifications.filter(
+    (item) => item.recipientUserId === recipientUserId,
+  );
 }
 export function transitionCollaboration(
   item: Collaboration,

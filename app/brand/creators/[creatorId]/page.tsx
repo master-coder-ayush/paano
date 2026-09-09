@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getCreator } from "@/lib/creator-marketplace";
 import { userFromDemoKey, withAsParam } from "@/lib/workspace-foundation";
 import { WorkspaceGuard, WorkspaceShell } from "@/components/workspace-shell";
+import { listCampaigns } from "@/lib/brand-workspace";
+import { addToShortlist } from "@/lib/shortlists";
+import { Toast } from "@/components/toast";
 
 export default async function BrandCreatorDetail({
   params,
@@ -13,7 +17,8 @@ export default async function BrandCreatorDetail({
 }) {
   const t = await getTranslations("Marketplace");
   const creator = getCreator((await params).creatorId);
-  const user = userFromDemoKey((await searchParams).as);
+  const query = await searchParams;
+  const user = userFromDemoKey(query.as);
   return (
     <WorkspaceGuard user={user} allowedTypes={["brand"]}>
       {({ workspace, user: activeUser }) => (
@@ -60,6 +65,40 @@ export default async function BrandCreatorDetail({
                 </div>
               </dl>
             </div>
+          )}
+          {creator && (
+            <div className="mt-6 border border-border bg-surface p-5">
+              <h2 className="text-lg font-semibold">{t("addToShortlist")}</h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {listCampaigns(workspace.id).map((campaign) => (
+                  <form
+                    key={campaign.id}
+                    action={async () => {
+                      "use server";
+                      const result = addToShortlist({
+                        workspaceId: workspace.id,
+                        campaignId: campaign.id,
+                        creatorId: creator.id,
+                        addedBy: activeUser.id,
+                      });
+                      redirect(
+                        `/brand/creators/${creator.id}?as=${activeUser.key}&toast=${result.error ? "error" : "added"}`,
+                      );
+                    }}
+                  >
+                    <button className="border border-border px-3 py-2 text-sm">
+                      {campaign.name}
+                    </button>
+                  </form>
+                ))}
+              </div>
+            </div>
+          )}
+          {query.toast === "added" && (
+            <Toast message={t("shortlistAdded")} tone="success" />
+          )}
+          {query.toast === "error" && (
+            <Toast message={t("shortlistError")} tone="error" />
           )}
         </WorkspaceShell>
       )}

@@ -10,3 +10,6 @@ Version 2 adds `/brand/campaigns/[campaignId]` and the protected brief endpoints
 ## Test notes
 
 Verify missing/invalid bearer tokens return 403, cross-workspace campaign IDs return 404, and brief validation rejects missing required fields.
+# Sprint 3
+
+Campaign detail includes the workspace-scoped shortlist and comparison surface. Campaign ownership is checked before shortlist reads or mutations; invalid campaign IDs return forbidden/not found behavior without leaking another workspace's records.

@@ -286,7 +286,14 @@
     "viewBrief": "View campaign brief",
     "notFound": "Campaign not found",
     "notFoundBody": "This campaign does not exist in your workspace.",
-    "back": "Back to campaigns"
+    "back": "Back to campaigns",
+    "shortlistTitle": "Campaign shortlist",
+    "shortlistEmpty": "No creators have been shortlisted yet. Add creators from the marketplace to compare them here.",
+    "removeCreator": "Remove",
+    "creatorRemoved": "Creator removed from shortlist.",
+    "shortlistError": "Could not update the shortlist. Please try again.",
+    "inviteCreator": "Invite",
+    "creatorInvited": "Invitation sent."
   },
   "BrandBrief": {
     "title": "Campaign brief",
@@ -338,7 +345,10 @@
     "linkedin": "LinkedIn",
     "topicsLabel": "Topics",
     "audience": "Audience",
-    "rate": "Rate"
+    "rate": "Rate",
+    "addToShortlist": "Add to campaign shortlist",
+    "shortlistAdded": "Creator added to shortlist.",
+    "shortlistError": "Could not update the shortlist. Please try again."
   },
   "CreatorCard": {
     "title": "My Card",

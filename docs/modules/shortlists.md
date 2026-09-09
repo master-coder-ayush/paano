@@ -1,0 +1,3 @@
+# Shortlists
+
+Sprint 3 adds workspace-scoped campaign shortlists. Brand owners/admins can add verified published creators, compare rate, topics, follower count, and country, and remove a shortlist entry. The protected route is `GET|POST|DELETE /api/brand/campaigns/[campaignId]/shortlist` and requires `Authorization: Bearer <token>`. Campaign ownership and active brand workspace membership are checked server-side. Entries are owned by the campaign workspace and record `added_by`; duplicate active entries are rejected. Future invitation changes should update the entry status transactionally with the collaboration and audit activity.
