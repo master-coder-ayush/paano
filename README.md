@@ -4,6 +4,10 @@ Paano is a planned B2B LinkedIn creator marketplace inspired by `naano.com`. The
 
 This repository is currently a scaffolded Next.js prototype. Product planning lives in `docs/` and should be treated as the source of truth before development begins.
 
+## Demo Access
+
+Open the [hosted dashboard](https://paano.vercel.app/dashboard) to directly access all dummy profiles and demo workspaces without logging in.
+
 ## Product Documentation
 
 - [Product roadmap](docs/features.md) defines the seven product versions and the order in which capabilities should be built.
