@@ -215,6 +215,11 @@
   "Brand": {
     "title": "Brand overview",
     "description": "Manage spaces, campaigns, creators, manual collaborations, messages, billing placeholders, and workspace settings from a single protected shell.",
+    "wallet": { "title": "Wallet balance", "body": "Calculated from posted manual ledger entries." },
+    "actions": { "title": "Pending creator actions", "body": "Drafts and posts waiting on the next handoff." },
+    "approvals": { "title": "Pending brand approvals", "body": "Collaboration work ready for your review." },
+    "published": { "title": "Recently published posts", "ready": "Published post records are ready to review.", "empty": "No published posts yet. Approved creator work will appear here." },
+    "next": { "title": "Next steps", "topUp": "Top up your wallet", "bookCall": "Book a campaign call", "findCreators": "Find creators" },
     "spaces": {
       "title": "Spaces",
       "body": "Workspace-owned destinations for your campaigns."
@@ -263,6 +268,7 @@
   "Creator": {
     "title": "Creator overview",
     "description": "Review profile completion, collaboration requests, draft notes, published post submission, earnings placeholders, affiliate link, messages, and settings.",
+    "dashboard": { "active": "Active collaborations", "requests": "Pending requests", "messages": "Recent messages" },
     "empty": {
       "card": {
         "title": "My Card",

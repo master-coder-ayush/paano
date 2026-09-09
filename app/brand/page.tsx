@@ -1,13 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import {
-  EmptyState,
-  StatGrid,
-  WorkspaceGuard,
-  WorkspaceShell,
-} from "@/components/workspace-shell";
+import { StatGrid, WorkspaceGuard, WorkspaceShell } from "@/components/workspace-shell";
 import { listCampaigns, listSpaces } from "@/lib/brand-workspace";
-import { userFromDemoKey } from "@/lib/workspace-foundation";
+import { getBrandDashboard } from "@/lib/dashboard";
+import { userFromDemoKey, withAsParam } from "@/lib/workspace-foundation";
 
 export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
   const t = await getTranslations("Brand");
@@ -25,6 +21,91 @@ export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
         >
           <div className="grid gap-5">
             <StatGrid area="brand" />
+            {(() => {
+              const dashboard = getBrandDashboard(workspace.id);
+              return (
+                <>
+                  <section className="grid gap-4 md:grid-cols-3">
+                    <Link
+                      href={withAsParam("/brand/billing", activeUser)}
+                      className="border border-border bg-surface p-5"
+                    >
+                      <p className="text-sm text-primary/70">
+                        {t("wallet.title")}
+                      </p>
+                      <p className="mt-2 text-3xl font-semibold">
+                        $
+                        {dashboard.balance.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                        })}
+                      </p>
+                      <p className="mt-1 text-sm text-primary/70">
+                        {t("wallet.body")}
+                      </p>
+                    </Link>
+                    <Link
+                      href={withAsParam("/brand/collaborations", activeUser)}
+                      className="border border-border bg-surface p-5"
+                    >
+                      <p className="text-sm text-primary/70">
+                        {t("actions.title")}
+                      </p>
+                      <p className="mt-2 text-3xl font-semibold">
+                        {dashboard.pendingCreatorActions.length}
+                      </p>
+                      <p className="mt-1 text-sm text-primary/70">
+                        {t("actions.body")}
+                      </p>
+                    </Link>
+                    <Link
+                      href={withAsParam("/brand/collaborations", activeUser)}
+                      className="border border-border bg-surface p-5"
+                    >
+                      <p className="text-sm text-primary/70">
+                        {t("approvals.title")}
+                      </p>
+                      <p className="mt-2 text-3xl font-semibold">
+                        {dashboard.pendingApprovals.length}
+                      </p>
+                      <p className="mt-1 text-sm text-primary/70">
+                        {t("approvals.body")}
+                      </p>
+                    </Link>
+                  </section>
+                  <section className="grid gap-4 lg:grid-cols-2">
+                    <div className="border border-border bg-surface p-5">
+                      <h2 className="font-semibold">{t("published.title")}</h2>
+                      <p className="mt-2 text-sm text-primary/70">
+                        {dashboard.published.length
+                          ? t("published.ready")
+                          : t("published.empty")}
+                      </p>
+                    </div>
+                    <div className="border border-border bg-surface p-5">
+                      <h2 className="font-semibold">{t("next.title")}</h2>
+                      <div className="mt-3 grid gap-2 text-sm">
+                        {["topUp", "bookCall", "findCreators"].map((key) => (
+                          <Link
+                            key={key}
+                            href={withAsParam(
+                              key === "topUp"
+                                ? "/brand/billing"
+                                : key === "findCreators"
+                                  ? "/brand/creators"
+                                  : "/help",
+                              activeUser,
+                            )}
+                            className="underline"
+                          >
+                            {t(`next.${key}`)}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                </>
+              );
+            })()}
             <div className="grid gap-4 sm:grid-cols-2">
               <Link
                 href={`/brand/spaces?as=${activeUser.key}`}
@@ -43,7 +124,9 @@ export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
                 className="border border-border bg-surface p-5"
               >
                 <h2 className="font-semibold">{t("marketplace.title")}</h2>
-                <p className="mt-2 text-sm text-primary/70">{t("marketplace.body")}</p>
+                <p className="mt-2 text-sm text-primary/70">
+                  {t("marketplace.body")}
+                </p>
               </Link>
               <Link
                 href={`/brand/campaigns?as=${activeUser.key}`}
@@ -58,25 +141,6 @@ export default async function BrandPage({ searchParams }: PageProps<"/brand">) {
                 </p>
               </Link>
             </div>
-            <section className="grid gap-4 lg:grid-cols-2">
-              <EmptyState
-                title={t("empty.spaces.title")}
-                body={t("empty.spaces.body")}
-                action={t("empty.spaces.action")}
-              />
-              <EmptyState
-                title={t("empty.campaigns.title")}
-                body={t("empty.campaigns.body")}
-              />
-              <EmptyState
-                title={t("empty.marketplace.title")}
-                body={t("empty.marketplace.body")}
-              />
-              <EmptyState
-                title={t("empty.billing.title")}
-                body={t("empty.billing.body")}
-              />
-            </section>
           </div>
         </WorkspaceShell>
       )}

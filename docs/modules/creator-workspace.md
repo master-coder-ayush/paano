@@ -4,3 +4,7 @@ Creator workspace navigation includes My Card and profile settings. Protected pa
 ## Sprint 6
 
 Creator collaboration requests and messages are scoped to the authenticated creator workspace. Creators may accept or decline only their own invited requests; unrelated brand records are not returned.
+
+## Version 2 Sprint 1
+
+`/creator` derives active collaborations, pending invitations, profile completion, upcoming work, and earnings from the authenticated creator workspace. Brand/customer details remain excluded from the overview; cards link to protected collaboration, card, earnings, and messages routes.

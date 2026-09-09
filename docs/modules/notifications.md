@@ -45,3 +45,7 @@ Notification rows include protected deep links back to the related workspace are
 - Verify `/notifications?as=brand`, `/notifications?as=creator`, and `/notifications?as=admin`.
 - Verify `/api/notifications` rejects missing bearer tokens.
 - Verify valid demo bearer tokens return only that user's notifications.
+
+## Version 2 Sprint 1
+
+Dashboard notification badges continue to use the authenticated demo identity and link to `/notifications`. No new notification type or persistence path is introduced by this sprint.
