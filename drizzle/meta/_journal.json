@@ -71,6 +71,13 @@
       "when": 1788933554547,
       "tag": "0009_sloppy_black_tarantula",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1788935482523,
+      "tag": "0010_mute_shocker",
+      "breakpoints": true
     }
   ]
 }

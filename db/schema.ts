@@ -360,6 +360,7 @@ export const spaces = mysqlTable(
     targetIcp: text("target_icp"),
     targetLocations: json("target_locations").$type<string[]>().notNull(),
     defaultCtaUrl: varchar("default_cta_url", { length: 255 }),
+    trackingKeyId: varchar("tracking_key_id", { length: 36 }),
     status: varchar("status", { length: 40 }).notNull(),
     ...timestamps,
   },
@@ -367,6 +368,131 @@ export const spaces = mysqlTable(
     workspaceIdx: index("spaces_workspace_id_idx").on(table.workspaceId),
     brandIdx: index("spaces_brand_id_idx").on(table.brandId),
     statusIdx: index("spaces_status_idx").on(table.status),
+  }),
+);
+
+export const pixelSiteKeyStatuses = ["active", "revoked"] as const;
+export const pixelEventStatuses = [
+  "received",
+  "processed",
+  "duplicate",
+  "failed",
+  "ignored",
+] as const;
+
+export const pixelSiteKeys = mysqlTable(
+  "pixel_site_keys",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    spaceId: varchar("space_id", { length: 36 })
+      .notNull()
+      .references(() => spaces.id),
+    key: varchar("key", { length: 80 }).notNull(),
+    status: varchar("status", { length: 20 })
+      .$type<(typeof pixelSiteKeyStatuses)[number]>()
+      .notNull(),
+    revokedAt: timestamp("revoked_at"),
+    ...timestamps,
+  },
+  (table) => ({
+    keyIdx: uniqueIndex("pixel_site_keys_key_idx").on(table.key),
+    spaceIdx: index("pixel_site_keys_space_idx").on(table.spaceId),
+    workspaceIdx: index("pixel_site_keys_workspace_idx").on(table.workspaceId),
+  }),
+);
+
+export const pixelEvents = mysqlTable(
+  "pixel_events",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    spaceId: varchar("space_id", { length: 36 })
+      .notNull()
+      .references(() => spaces.id),
+    siteKeyId: varchar("site_key_id", { length: 36 })
+      .notNull()
+      .references(() => pixelSiteKeys.id),
+    eventType: varchar("event_type", { length: 80 }).notNull(),
+    eventId: varchar("event_id", { length: 120 }).notNull(),
+    payload: json("payload").$type<Record<string, unknown>>(),
+    identityHash: varchar("identity_hash", { length: 128 }),
+    receivedAt: timestamp("received_at").defaultNow().notNull(),
+    status: varchar("status", { length: 20 })
+      .$type<(typeof pixelEventStatuses)[number]>()
+      .notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    eventIdx: uniqueIndex("pixel_events_site_event_idx").on(
+      table.siteKeyId,
+      table.eventId,
+    ),
+    spaceIdx: index("pixel_events_space_idx").on(
+      table.spaceId,
+      table.receivedAt,
+    ),
+    typeIdx: index("pixel_events_type_idx").on(table.eventType),
+  }),
+);
+
+export const conversionEvents = mysqlTable(
+  "conversion_events",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    spaceId: varchar("space_id", { length: 36 })
+      .notNull()
+      .references(() => spaces.id),
+    pixelEventId: varchar("pixel_event_id", { length: 36 })
+      .notNull()
+      .references(() => pixelEvents.id),
+    eventType: varchar("event_type", { length: 80 }).notNull(),
+    valueAmount: decimal("value_amount", { precision: 12, scale: 2 }),
+    currency: varchar("currency", { length: 3 }),
+    payload: json("payload").$type<Record<string, unknown>>(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: index("conversion_events_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    eventIdx: uniqueIndex("conversion_events_pixel_event_idx").on(
+      table.pixelEventId,
+    ),
+  }),
+);
+
+export const pixelDebugEvents = mysqlTable(
+  "pixel_debug_events",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    spaceId: varchar("space_id", { length: 36 })
+      .notNull()
+      .references(() => spaces.id),
+    siteKeyId: varchar("site_key_id", { length: 36 })
+      .notNull()
+      .references(() => pixelSiteKeys.id),
+    eventType: varchar("event_type", { length: 80 }).notNull(),
+    payload: json("payload").$type<Record<string, unknown>>(),
+    result: varchar("result", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: index("pixel_debug_events_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
   }),
 );
 

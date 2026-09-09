@@ -133,7 +133,7 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "tracking", href: "/brand/tracking" },
     { labelKey: "messages", href: "/brand/messages" },
     { labelKey: "billing", href: "/brand/billing" },
-    { labelKey: "settings", href: "/brand#settings" },
+    { labelKey: "settings", href: "/brand/settings/integrations/pixel" },
   ],
   creator: [
     { labelKey: "overview", href: "/creator" },

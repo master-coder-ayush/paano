@@ -210,6 +210,7 @@
       "creators": "Creators",
       "collaborations": "Collaborations",
       "results": "Results",
+      "tracking": "Tracking",
       "messages": "Messages",
       "billing": "Billing",
       "settings": "Settings",
@@ -750,6 +751,14 @@
       "expired": "Expired",
       "invalid": "Invalid"
     }
+  },
+  "Pixel": {
+    "title": "Pixel setup",
+    "description": "Install Paano on each brand space to receive first-party pageviews and conversion events.",
+    "installOn": "Install on {website}. The script can be added to your site head or tag manager.",
+    "copy": "Copy snippet", "copied": "Snippet copied", "regenerate": "Regenerate key", "saved": "New key created.",
+    "warning": "Regenerating stops the previous key immediately. Continue?",
+    "emptyTitle": "Create a space first", "emptyBody": "Pixel setup becomes available after your brand has a space."
   },
   "Analytics": {
     "title": "Creator analytics",
