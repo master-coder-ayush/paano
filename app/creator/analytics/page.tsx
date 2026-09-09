@@ -27,14 +27,13 @@ export default async function CreatorAnalyticsPage({
             title={t("title")}
             description={t("description")}
           >
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {(
                 [
                   ["impressions", totals.impressions],
                   ["clicks", totals.clicks],
                   ["leads", totals.leads],
                   ["signups", totals.signups],
-                  ["revenue", `$${totals.revenue.toLocaleString()}`],
                 ] as const
               ).map(([key, value]) => (
                 <div key={key} className="border border-border bg-surface p-4">
@@ -46,6 +45,9 @@ export default async function CreatorAnalyticsPage({
               ))}
             </div>
             <section className="mt-5">
+              <div className="mb-4 border border-border bg-surface p-4 text-sm text-primary/70">
+                {t("privacyNotice")}
+              </div>
               {items.length ? (
                 items.map((item) => (
                   <div
@@ -55,7 +57,11 @@ export default async function CreatorAnalyticsPage({
                     <p className="font-semibold">{item.postUrl}</p>
                     <p className="mt-2 text-sm text-primary/70">
                       {item.publishedAt} · {item.clicks} {t("metrics.clicks")} ·{" "}
-                      {item.leads} {t("metrics.leads")}
+                      {item.leads} {t("metrics.leads")} Â· {item.signups}{" "}
+                      {t("metrics.signups")}
+                    </p>
+                    <p className="mt-2 text-xs text-primary/60">
+                      {t("pendingMetrics")}
                     </p>
                   </div>
                 ))

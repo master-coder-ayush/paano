@@ -827,7 +827,9 @@
   },
   "Analytics": {
     "title": "Creator analytics",
-    "description": "Review manual performance summaries for your published collaborations.",
+    "description": "Review post-level clicks and aggregate conversions for your published collaborations.",
+    "privacyNotice": "Brand revenue, pipeline values, buyer identity, and raw event payloads are private and are not shown here.",
+    "pendingMetrics": "Some metrics may be delayed while tracked events are processed.",
     "emptyTitle": "No analytics yet",
     "emptyBody": "Performance summaries will appear after a brand records metrics for one of your published posts.",
     "metrics": {
