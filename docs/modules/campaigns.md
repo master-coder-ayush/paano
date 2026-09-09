@@ -13,3 +13,6 @@ Verify missing/invalid bearer tokens return 403, cross-workspace campaign IDs re
 # Sprint 3
 
 Campaign detail includes the workspace-scoped shortlist and comparison surface. Campaign ownership is checked before shortlist reads or mutations; invalid campaign IDs return forbidden/not found behavior without leaking another workspace's records.
+# Sprint 5 reporting integration
+
+Campaigns expose workspace-scoped results through `/brand/results`. Campaign filters are server-rendered and the first available campaign is used by the UI when no filter is supplied. Brand access requires a bearer token resolving to the brand workspace; creator and unrelated workspace records are forbidden.

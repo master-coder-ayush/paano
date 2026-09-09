@@ -59,6 +59,8 @@ const navIcons = {
   review: ShieldCheck,
   support: MessageSquare,
   payouts: Wallet,
+  results: FileText,
+  analytics: FileText,
 };
 
 type AuthorizedWorkspace = NonNullable<ReturnType<typeof authorizeWorkspace>["workspace"]>;

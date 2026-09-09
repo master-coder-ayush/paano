@@ -170,11 +170,13 @@
       "campaigns": "Campaigns",
       "creators": "Creators",
       "collaborations": "Collaborations",
+      "results": "Results",
       "messages": "Messages",
       "billing": "Billing",
       "settings": "Settings",
       "myCard": "My Card",
       "earnings": "Earnings",
+      "analytics": "Analytics",
       "affiliate": "Affiliate",
       "clients": "Clients",
       "budgets": "Budgets",
@@ -622,5 +624,23 @@
     "threadTitle": "Developer tools launch",
     "replyTitle": "Reply securely",
     "replyBody": "Messages are protected by workspace access and stored against this campaign thread."
+  },
+  "Results": {
+    "brandTitle": "Campaign results",
+    "brandDescription": "Enter and review manual performance metrics for published creator posts.",
+    "allCampaigns": "All campaigns",
+    "creatorPlaceholder": "Creator ID",
+    "filter": "Filter results",
+    "tableTitle": "Published post performance",
+    "emptyTitle": "No results yet",
+    "emptyBody": "Verified published posts with manual metrics will appear here.",
+    "metrics": { "impressions": "Impressions", "clicks": "Clicks", "leads": "Leads", "signups": "Signups", "revenue": "Revenue / pipeline" }
+  },
+  "Analytics": {
+    "title": "Creator analytics",
+    "description": "Review manual performance summaries for your published collaborations.",
+    "emptyTitle": "No analytics yet",
+    "emptyBody": "Performance summaries will appear after a brand records metrics for one of your published posts.",
+    "metrics": { "impressions": "Impressions", "clicks": "Clicks", "leads": "Leads", "signups": "Signups", "revenue": "Revenue / pipeline" }
   }
 }

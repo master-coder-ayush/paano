@@ -512,6 +512,94 @@ export const collaborations = mysqlTable(
   }),
 );
 
+export const resultSnapshotStatuses = [
+  "fresh",
+  "delayed",
+  "partial",
+  "failed",
+] as const;
+
+export const publishedPosts = mysqlTable(
+  "published_posts",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    collaborationId: varchar("collaboration_id", { length: 36 })
+      .notNull()
+      .references(() => collaborations.id),
+    campaignId: varchar("campaign_id", { length: 36 })
+      .notNull()
+      .references(() => campaigns.id),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    platform: varchar("platform", { length: 40 }).notNull(),
+    url: varchar("url", { length: 500 }).notNull(),
+    publishedAt: timestamp("published_at").notNull(),
+    submittedBy: varchar("submitted_by", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    verificationStatus: varchar("verification_status", {
+      length: 40,
+    }).notNull(),
+    manualMetrics: json("manual_metrics").$type<Record<string, unknown>>(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: index("published_posts_workspace_idx").on(table.workspaceId),
+    collaborationIdx: uniqueIndex("published_posts_collaboration_idx").on(
+      table.collaborationId,
+    ),
+    campaignIdx: index("published_posts_campaign_idx").on(table.campaignId),
+    creatorIdx: index("published_posts_creator_idx").on(table.creatorId),
+  }),
+);
+
+export const resultSnapshots = mysqlTable(
+  "result_snapshots",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    publishedPostId: varchar("published_post_id", { length: 36 })
+      .notNull()
+      .references(() => publishedPosts.id),
+    campaignId: varchar("campaign_id", { length: 36 })
+      .notNull()
+      .references(() => campaigns.id),
+    creatorId: varchar("creator_id", { length: 36 })
+      .notNull()
+      .references(() => creators.id),
+    impressions: int("impressions").notNull().default(0),
+    clicks: int("clicks").notNull().default(0),
+    leads: int("leads").notNull().default(0),
+    signups: int("signups").notNull().default(0),
+    revenueAmount: decimal("revenue_amount", { precision: 12, scale: 2 })
+      .notNull()
+      .default("0"),
+    currency: varchar("currency", { length: 3 }).notNull(),
+    source: varchar("source", { length: 40 }).notNull(),
+    recordedBy: varchar("recorded_by", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    recordedAt: timestamp("recorded_at").defaultNow().notNull(),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof resultSnapshotStatuses)[number]>()
+      .notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: index("result_snapshots_workspace_idx").on(table.workspaceId),
+    postIdx: uniqueIndex("result_snapshots_post_idx").on(table.publishedPostId),
+    campaignIdx: index("result_snapshots_campaign_idx").on(table.campaignId),
+    creatorIdx: index("result_snapshots_creator_idx").on(table.creatorId),
+    recordedIdx: index("result_snapshots_recorded_idx").on(table.recordedAt),
+  }),
+);
+
 export const contentDrafts = mysqlTable(
   "content_drafts",
   {
