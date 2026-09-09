@@ -226,6 +226,7 @@
       "review": "Review",
       "support": "Support",
       "attribution": "Attribution",
+      "trackingAdmin": "Tracking diagnostics",
       "payouts": "Payouts",
       "referrals": "Referrals"
     },
@@ -761,6 +762,14 @@
     "emptyBody": "Conversions will appear after a non-debug pixel event is received.",
     "unmatched": "Unmatched campaign",
     "unknownCreator": "Unknown creator"
+  },
+  "AdminTracking": {
+    "title": "Tracking diagnostics",
+    "description": "Inspect links, pixel events, attribution decisions, and the end-to-end QA path.",
+    "links": "Tracking links", "events": "Pixel events", "attributions": "Attribution records", "clicks": "clicks", "none": "No records yet.",
+    "qaTitle": "V3 regression checklist",
+    "qaBody": "Exercise a tracking link click, signup, purchase, duplicate event, missing key, regenerated key, and disabled link. Confirm brand, creator, and admin boundaries for each result.",
+    "qaAction": "See docs/qa/version-3-tracking.md"
   },
   "Tracking": {
     "title": "Tracking links",

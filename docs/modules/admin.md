@@ -1,5 +1,7 @@
 # Admin Module
 
+Version 3 Sprint 7 adds `/admin/tracking`, a protected diagnostic view for tracking links, pixel events, attribution records, and QA guidance. It is admin-only and excludes raw buyer identity.
+
 ## Version 1 Sprint 1
 
 ### Routes

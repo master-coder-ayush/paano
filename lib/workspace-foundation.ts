@@ -173,6 +173,7 @@ export const navigationByType: Record<
     { labelKey: "referrals", href: "/admin/referrals" },
     { labelKey: "support", href: "/admin/support" },
     { labelKey: "attribution", href: "/admin/attribution" },
+    { labelKey: "trackingAdmin", href: "/admin/tracking" },
   ],
 };
 
