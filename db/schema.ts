@@ -1372,3 +1372,39 @@ export const referralRewards = mysqlTable(
     ),
   }),
 );
+
+export const exportJobStatuses = [
+  "queued",
+  "running",
+  "complete",
+  "failed",
+  "expired",
+] as const;
+export const exportJobs = mysqlTable(
+  "export_jobs",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    requestedBy: varchar("requested_by", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    filters: json("filters").$type<Record<string, string>>().notNull(),
+    status: varchar("status", { length: 20 })
+      .$type<(typeof exportJobStatuses)[number]>()
+      .notNull(),
+    fileUrl: varchar("file_url", { length: 500 }),
+    storageRef: varchar("storage_ref", { length: 255 }),
+    error: text("error"),
+    completedAt: timestamp("completed_at"),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: index("export_jobs_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    statusIdx: index("export_jobs_status_idx").on(table.status),
+  }),
+);

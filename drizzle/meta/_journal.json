@@ -92,6 +92,13 @@
       "when": 1788937235504,
       "tag": "0012_open_chat",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1788938154348,
+      "tag": "0013_simple_stingray",
+      "breakpoints": true
     }
   ]
 }

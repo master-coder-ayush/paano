@@ -8,6 +8,7 @@ import { listCampaigns } from "@/lib/brand-workspace";
 import { listResults, resultTotals } from "@/lib/results";
 import { userFromDemoKey } from "@/lib/workspace-foundation";
 import { funnel } from "@/lib/attribution";
+import { ResultsExport } from "@/components/results-export";
 
 export default async function BrandResultsPage({
   searchParams,
@@ -27,6 +28,7 @@ export default async function BrandResultsPage({
           from: typeof q.from === "string" ? q.from : undefined,
           to: typeof q.to === "string" ? q.to : undefined,
         };
+        const eventType = typeof q.eventType === "string" ? q.eventType : "";
         const items = listResults(workspace.id, filters);
         const totals = resultTotals(items);
         const campaigns = listCampaigns(workspace.id);
@@ -71,10 +73,12 @@ export default async function BrandResultsPage({
                 type="date"
                 className="border border-border bg-background p-2 text-sm"
               />
+              <select name="eventType" defaultValue={eventType} className="border border-border bg-background p-2 text-sm"><option value="">{t("allEvents")}</option><option value="lead">{t("eventTypes.lead")}</option><option value="signup">{t("eventTypes.signup")}</option><option value="purchase">{t("eventTypes.purchase")}</option></select>
               <button className="bg-primary px-4 py-2 text-sm font-semibold text-background">
                 {t("filter")}
               </button>
             </form>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3"><p className="text-sm text-primary/70">{t("conversionRate")}: {totals.clicks ? ((totals.signups / totals.clicks) * 100).toFixed(2) : "0.00"}%</p><ResultsExport token={active.tokenLabel} query={new URLSearchParams({ ...(filters.campaignId ? { campaign: filters.campaignId } : {}), ...(filters.creatorId ? { creator: filters.creatorId } : {}), ...(filters.postId ? { post: filters.postId } : {}), ...(filters.from ? { from: filters.from } : {}), ...(filters.to ? { to: filters.to } : {}), ...(eventType ? { eventType } : {}) }).toString()} label={t("exportCsv")} /></div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
               {(
                 [
