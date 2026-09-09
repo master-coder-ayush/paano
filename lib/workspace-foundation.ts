@@ -140,7 +140,7 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "collaborations", href: "/creator/collaborations" },
     { labelKey: "earnings", href: "/creator/earnings" },
     { labelKey: "analytics", href: "/creator/analytics" },
-    { labelKey: "affiliate", href: "/creator#affiliate" },
+    { labelKey: "affiliate", href: "/creator/affiliate" },
     { labelKey: "messages", href: "/creator/messages" },
     { labelKey: "settings", href: "/creator/settings/profile" },
   ],
@@ -161,6 +161,7 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "review", href: "/admin/review" },
     { labelKey: "billing", href: "/admin/billing" },
     { labelKey: "payouts", href: "/admin/payouts" },
+    { labelKey: "referrals", href: "/admin/referrals" },
     { labelKey: "support", href: "/admin/support" },
   ],
 };

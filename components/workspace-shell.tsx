@@ -59,6 +59,7 @@ const navIcons = {
   review: ShieldCheck,
   support: MessageSquare,
   payouts: Wallet,
+  referrals: UsersRound,
   results: FileText,
   analytics: FileText,
 };

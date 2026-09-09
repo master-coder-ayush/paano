@@ -1000,3 +1000,115 @@ export const payoutRecords = mysqlTable(
     ),
   }),
 );
+
+export const referralLinkTypes = ["brand", "creator"] as const;
+export const referralAttributionStatuses = [
+  "created",
+  "attributed",
+  "qualified",
+  "earning",
+  "payable",
+  "paid",
+  "rejected",
+  "expired",
+] as const;
+
+export const referralLinks = mysqlTable(
+  "referral_links",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    referrerUserId: varchar("referrer_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    type: varchar("type", { length: 20 })
+      .$type<(typeof referralLinkTypes)[number]>()
+      .notNull(),
+    token: varchar("token", { length: 120 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    tokenIdx: uniqueIndex("referral_links_token_idx").on(table.token),
+    ownerIdx: index("referral_links_owner_idx").on(
+      table.workspaceId,
+      table.referrerUserId,
+    ),
+  }),
+);
+
+export const referralAttributions = mysqlTable(
+  "referral_attributions",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    referralLinkId: varchar("referral_link_id", { length: 36 })
+      .notNull()
+      .references(() => referralLinks.id),
+    referrerUserId: varchar("referrer_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    referredEntityType: varchar("referred_entity_type", {
+      length: 40,
+    }).notNull(),
+    referredEntityId: varchar("referred_entity_id", { length: 36 }).notNull(),
+    rewardWindowStart: timestamp("reward_window_start"),
+    rewardWindowEnd: timestamp("reward_window_end"),
+    status: varchar("status", { length: 40 })
+      .$type<(typeof referralAttributionStatuses)[number]>()
+      .notNull(),
+    amount: decimal("amount", { precision: 12, scale: 2 })
+      .notNull()
+      .default("0"),
+    rewardRuleVersion: varchar("reward_rule_version", { length: 40 })
+      .notNull()
+      .default("v1"),
+    ...timestamps,
+  },
+  (table) => ({
+    ownerStatusIdx: index("referral_attributions_owner_status_idx").on(
+      table.workspaceId,
+      table.referrerUserId,
+      table.status,
+    ),
+    entityIdx: uniqueIndex("referral_attributions_entity_idx").on(
+      table.referralLinkId,
+      table.referredEntityType,
+      table.referredEntityId,
+    ),
+  }),
+);
+
+export const referralRewards = mysqlTable(
+  "referral_rewards",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    attributionId: varchar("attribution_id", { length: 36 })
+      .notNull()
+      .references(() => referralAttributions.id),
+    referrerUserId: varchar("referrer_user_id", { length: 36 })
+      .notNull()
+      .references(() => users.id),
+    amount: decimal("amount", { precision: 12, scale: 2 }).notNull(),
+    currency: varchar("currency", { length: 3 }).notNull().default("USD"),
+    status: varchar("status", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    ownerStatusIdx: index("referral_rewards_owner_status_idx").on(
+      table.workspaceId,
+      table.referrerUserId,
+      table.status,
+    ),
+    attributionIdx: index("referral_rewards_attribution_idx").on(
+      table.attributionId,
+    ),
+  }),
+);

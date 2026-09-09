@@ -185,7 +185,8 @@
       "opportunities": "Opportunities",
       "review": "Review",
       "support": "Support",
-      "payouts": "Payouts"
+      "payouts": "Payouts",
+      "referrals": "Referrals"
     },
     "stats": {
       "brand": {
@@ -634,13 +635,25 @@
     "tableTitle": "Published post performance",
     "emptyTitle": "No results yet",
     "emptyBody": "Verified published posts with manual metrics will appear here.",
-    "metrics": { "impressions": "Impressions", "clicks": "Clicks", "leads": "Leads", "signups": "Signups", "revenue": "Revenue / pipeline" }
+    "metrics": {
+      "impressions": "Impressions",
+      "clicks": "Clicks",
+      "leads": "Leads",
+      "signups": "Signups",
+      "revenue": "Revenue / pipeline"
+    }
   },
   "Analytics": {
     "title": "Creator analytics",
     "description": "Review manual performance summaries for your published collaborations.",
     "emptyTitle": "No analytics yet",
     "emptyBody": "Performance summaries will appear after a brand records metrics for one of your published posts.",
-    "metrics": { "impressions": "Impressions", "clicks": "Clicks", "leads": "Leads", "signups": "Signups", "revenue": "Revenue / pipeline" }
+    "metrics": {
+      "impressions": "Impressions",
+      "clicks": "Clicks",
+      "leads": "Leads",
+      "signups": "Signups",
+      "revenue": "Revenue / pipeline"
+    }
   }
 }
