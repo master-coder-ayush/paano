@@ -408,6 +408,39 @@ export const campaigns = mysqlTable(
   }),
 );
 
+export const campaignBriefs = mysqlTable(
+  "campaign_briefs",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    campaignId: varchar("campaign_id", { length: 36 })
+      .notNull()
+      .references(() => campaigns.id),
+    version: int("version").notNull(),
+    objectives: text("objectives").notNull(),
+    keyMessages: text("key_messages").notNull(),
+    guidelines: text("guidelines").notNull(),
+    deliverables: text("deliverables").notNull(),
+    usageRights: text("usage_rights").notNull(),
+    approvalRules: text("approval_rules").notNull(),
+    ctaUrl: varchar("cta_url", { length: 255 }).notNull(),
+    status: varchar("status", { length: 40 }).notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceCampaignIdx: index("campaign_briefs_workspace_campaign_idx").on(
+      table.workspaceId,
+      table.campaignId,
+    ),
+    campaignVersionIdx: uniqueIndex("campaign_briefs_campaign_version_idx").on(
+      table.campaignId,
+      table.version,
+    ),
+  }),
+);
+
 export const collaborations = mysqlTable(
   "collaborations",
   {

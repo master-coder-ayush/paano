@@ -27,6 +27,22 @@ export type Campaign = {
   startsAt: string;
   endsAt: string;
 };
+export type CampaignBrief = {
+  id: string;
+  campaignId: string;
+  workspaceId: string;
+  version: number;
+  objectives: string;
+  keyMessages: string;
+  guidelines: string;
+  deliverables: string;
+  usageRights: string;
+  approvalRules: string;
+  ctaUrl: string;
+  status: "draft" | "ready_for_review" | "approved" | "archived";
+  createdAt: string;
+  updatedAt: string;
+};
 
 const workspaceId = "workspace_brand_demo";
 const spaces: Space[] = [
@@ -60,6 +76,7 @@ const campaigns: Campaign[] = [
     endsAt: "2026-10-31",
   },
 ];
+const briefs: CampaignBrief[] = [];
 
 export function listSpaces(workspace: string) {
   return spaces.filter((item) => item.workspaceId === workspace);
@@ -79,6 +96,39 @@ export function getCampaign(workspace: string, id: string) {
   return campaigns.find(
     (item) => item.workspaceId === workspace && item.id === id,
   );
+}
+export function getBrief(workspace: string, campaignId: string) {
+  return briefs
+    .filter((b) => b.workspaceId === workspace && b.campaignId === campaignId)
+    .sort((a, b) => b.version - a.version)[0];
+}
+export function saveBrief(
+  workspace: string,
+  campaignId: string,
+  input: Omit<
+    CampaignBrief,
+    "id" | "workspaceId" | "campaignId" | "version" | "createdAt" | "updatedAt"
+  >,
+) {
+  const current = getBrief(workspace, campaignId);
+  if (current?.status === "approved")
+    throw new Error("approved_brief_immutable");
+  const now = new Date().toISOString();
+  if (current) {
+    Object.assign(current, input, { updatedAt: now });
+    return current;
+  }
+  const brief = {
+    ...input,
+    id: randomUUID(),
+    workspaceId: workspace,
+    campaignId,
+    version: 1,
+    createdAt: now,
+    updatedAt: now,
+  };
+  briefs.push(brief);
+  return brief;
 }
 export function saveSpace(
   input: Omit<Space, "id" | "workspaceId">,
