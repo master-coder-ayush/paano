@@ -1,6 +1,11 @@
 import { createHash } from "node:crypto";
 
-export type WorkspaceType = "brand" | "creator" | "brand_agency" | "creator_agency" | "admin";
+export type WorkspaceType =
+  | "brand"
+  | "creator"
+  | "brand_agency"
+  | "creator_agency"
+  | "admin";
 export type WorkspaceRole =
   | "owner"
   | "admin"
@@ -122,7 +127,10 @@ export const demoUsers: DemoUser[] = [
   },
 ];
 
-export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; href: string }>> = {
+export const navigationByType: Record<
+  WorkspaceType,
+  Array<{ labelKey: string; href: string }>
+> = {
   brand: [
     { labelKey: "overview", href: "/brand" },
     { labelKey: "spaces", href: "/brand/spaces" },
@@ -164,6 +172,7 @@ export const navigationByType: Record<WorkspaceType, Array<{ labelKey: string; h
     { labelKey: "payouts", href: "/admin/payouts" },
     { labelKey: "referrals", href: "/admin/referrals" },
     { labelKey: "support", href: "/admin/support" },
+    { labelKey: "attribution", href: "/admin/attribution" },
   ],
 };
 
@@ -221,12 +230,17 @@ export function userFromDemoKey(value: string | string[] | undefined) {
   return demoUsers.find((user) => user.key === key) ?? null;
 }
 
-export function authorizeWorkspace(user: DemoUser | null, allowedTypes: WorkspaceType[]) {
+export function authorizeWorkspace(
+  user: DemoUser | null,
+  allowedTypes: WorkspaceType[],
+) {
   if (!user) {
     return { state: "unauthenticated" as AuthState, workspace: null };
   }
 
-  const workspace = user.workspaces.find((item) => allowedTypes.includes(item.type));
+  const workspace = user.workspaces.find((item) =>
+    allowedTypes.includes(item.type),
+  );
 
   if (!workspace) {
     return { state: "workspace_missing" as AuthState, workspace: null };

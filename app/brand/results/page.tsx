@@ -7,6 +7,7 @@ import {
 import { listCampaigns } from "@/lib/brand-workspace";
 import { listResults, resultTotals } from "@/lib/results";
 import { userFromDemoKey } from "@/lib/workspace-foundation";
+import { funnel } from "@/lib/attribution";
 
 export default async function BrandResultsPage({
   searchParams,
@@ -29,6 +30,7 @@ export default async function BrandResultsPage({
         const items = listResults(workspace.id, filters);
         const totals = resultTotals(items);
         const campaigns = listCampaigns(workspace.id);
+        const conversionFunnel = funnel(workspace.id);
         return (
           <WorkspaceShell
             user={active}
@@ -91,6 +93,30 @@ export default async function BrandResultsPage({
                 </div>
               ))}
             </div>
+            <section className="mt-5 border border-border bg-surface p-5">
+              <h2 className="font-semibold">{t("funnelTitle")}</h2>
+              <p className="mt-1 text-sm text-primary/70">
+                {t("funnelDescription")}
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {(
+                  [
+                    ["clicks", conversionFunnel.clicks],
+                    ["leads", conversionFunnel.leads],
+                    ["signups", conversionFunnel.signups],
+                    ["purchases", conversionFunnel.purchases],
+                    ["attributed", conversionFunnel.attributed],
+                  ] as const
+                ).map(([key, value]) => (
+                  <div key={key} className="border border-border p-4">
+                    <p className="text-sm text-primary/70">
+                      {t(`funnel.${key}`)}
+                    </p>
+                    <p className="mt-2 text-2xl font-semibold">{value}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
             <section className="mt-5 border border-border bg-surface p-5">
               <h2 className="font-semibold">{t("tableTitle")}</h2>
               {items.length ? (

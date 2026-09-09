@@ -424,7 +424,9 @@ export const pixelEvents = mysqlTable(
     receivedAt: timestamp("received_at").defaultNow().notNull(),
     processedAt: timestamp("processed_at"),
     source: varchar("source", { length: 30 }).notNull().default("pixel"),
-    consentMode: varchar("consent_mode", { length: 30 }).notNull().default("granted"),
+    consentMode: varchar("consent_mode", { length: 30 })
+      .notNull()
+      .default("granted"),
     piiSuppressed: int("pii_suppressed").notNull().default(0),
     status: varchar("status", { length: 20 })
       .$type<(typeof pixelEventStatuses)[number]>()
@@ -497,6 +499,56 @@ export const pixelDebugEvents = mysqlTable(
       table.workspaceId,
       table.createdAt,
     ),
+  }),
+);
+
+export const attributionStatuses = [
+  "attributed",
+  "unattributed",
+  "duplicate",
+  "recalculated",
+  "disputed",
+] as const;
+export const attributionRecords = mysqlTable(
+  "attribution_records",
+  {
+    id: id(),
+    workspaceId: varchar("workspace_id", { length: 36 })
+      .notNull()
+      .references(() => workspaces.id),
+    conversionEventId: varchar("conversion_event_id", { length: 36 })
+      .notNull()
+      .references(() => conversionEvents.id),
+    trackingClickId: varchar("tracking_click_id", { length: 36 }).references(
+      () => trackingClicks.id,
+    ),
+    campaignId: varchar("campaign_id", { length: 36 }).references(
+      () => campaigns.id,
+    ),
+    creatorId: varchar("creator_id", { length: 36 }).references(
+      () => creators.id,
+    ),
+    publishedPostId: varchar("published_post_id", { length: 36 }).references(
+      () => publishedPosts.id,
+    ),
+    attributionModel: varchar("attribution_model", { length: 40 }).notNull(),
+    confidence: varchar("confidence", { length: 20 }).notNull(),
+    explanation: text("explanation").notNull(),
+    status: varchar("status", { length: 20 })
+      .$type<(typeof attributionStatuses)[number]>()
+      .notNull(),
+    ...timestamps,
+  },
+  (table) => ({
+    workspaceIdx: index("attribution_records_workspace_idx").on(
+      table.workspaceId,
+      table.createdAt,
+    ),
+    conversionIdx: uniqueIndex("attribution_records_conversion_idx").on(
+      table.conversionEventId,
+    ),
+    campaignIdx: index("attribution_records_campaign_idx").on(table.campaignId),
+    creatorIdx: index("attribution_records_creator_idx").on(table.creatorId),
   }),
 );
 

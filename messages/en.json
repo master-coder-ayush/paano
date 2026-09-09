@@ -225,6 +225,7 @@
       "opportunities": "Opportunities",
       "review": "Review",
       "support": "Support",
+      "attribution": "Attribution",
       "payouts": "Payouts",
       "referrals": "Referrals"
     },
@@ -728,6 +729,9 @@
     "tableTitle": "Published post performance",
     "emptyTitle": "No results yet",
     "emptyBody": "Verified published posts with manual metrics will appear here.",
+    "funnelTitle": "Conversion funnel",
+    "funnelDescription": "First-party events are matched to the latest valid non-bot click when a tracking token is present.",
+    "funnel": { "clicks": "Clicks", "leads": "Leads", "signups": "Signups / trials", "purchases": "Purchases", "attributed": "Attributed" },
     "metrics": {
       "impressions": "Impressions",
       "clicks": "Clicks",
@@ -735,6 +739,14 @@
       "signups": "Signups",
       "revenue": "Revenue / pipeline"
     }
+  },
+  "Attribution": {
+    "title": "Attribution inspector",
+    "description": "Review deterministic last-click decisions, confidence, and unmatched conversions.",
+    "emptyTitle": "No attribution decisions yet",
+    "emptyBody": "Conversions will appear after a non-debug pixel event is received.",
+    "unmatched": "Unmatched campaign",
+    "unknownCreator": "Unknown creator"
   },
   "Tracking": {
     "title": "Tracking links",
